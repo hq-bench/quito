@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QuitoBench: A High-Quality Billion-Scale CloudOps Time Series Benchmark</title>
+  <meta name="description" content="QuitoBench is a billion-scale CloudOps time series forecasting benchmark from Ant Group, evaluating 10 models across 232,200 instances.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ===== HEADER ===== -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <h1>QuitoBench</h1>
+        <span class="subtitle">Ant Group</span>
+      </div>
+      <button class="menu-toggle" aria-label="Toggle navigation">&#9776;</button>
+      <nav>
+        <ul class="header-nav">
+          <li><a href="#introduction">About</a></li>
+          <li><a href="#leaderboard">Leaderboard</a></li>
+          <li><a href="#context-length">Context-Length</a></li>
+          <li><a href="#tsf-regime">TSF Regime</a></li>
+          <li><a href="#efficiency">Efficiency</a></li>
+          <li><a href="#difficulty">Difficulty</a></li>
+          <li><a href="#citation">Citation</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <h2>QuitoBench</h2>
+    <p class="hero-subtitle">A High-Quality Billion-Scale CloudOps Time Series Benchmark</p>
+    <p class="hero-authors">Ant Group &middot; Alipay</p>
+    <div class="hero-buttons">
+      <a href="#" class="hero-btn primary" title="Paper (coming soon)">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zM14 3.5L18.5 8H14V3.5zM6 20V4h7v5h5v11H6z"/></svg>
+        Paper
+      </a>
+      <a href="https://github.com/alipay/quito-10b" class="hero-btn secondary" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.866-.013-1.7-2.782.604-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836c.85.004 1.705.115 2.504.337 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.161 22 16.416 22 12c0-5.523-4.477-10-10-10z"/></svg>
+        Code
+      </a>
+      <a href="#" class="hero-btn secondary" title="Data (coming soon)">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 4.69 2 8v8c0 3.31 4.48 6 10 6s10-2.69 10-6V8c0-3.31-4.48-6-10-6zm0 2c4.42 0 8 1.79 8 4s-3.58 4-8 4-8-1.79-8-4 3.58-4 8-4zM4 16v-2.47c1.82 1.3 4.72 2.14 8 2.14s6.18-.84 8-2.14V16c0 2.21-3.58 4-8 4s-8-1.79-8-4z"/></svg>
+        Data
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== NEWS ===== -->
+  <section class="content-section" id="news">
+    <div class="section-inner">
+      <h2>News</h2>
+      <ul class="news-list">
+        <li><span class="news-date">[2025-XX-XX]</span> QuitoBench paper released on arXiv.</li>
+        <li><span class="news-date">[2025-XX-XX]</span> QuitoBench dataset and code publicly released.</li>
+        <li><span class="news-date">[2025-XX-XX]</span> Project website launched.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== INTRODUCTION ===== -->
+  <section class="content-section alt-bg" id="introduction">
+    <div class="section-inner">
+      <h2>About QuitoBench</h2>
+      <p>
+        Time series foundation models (FMs) promise universal forecasting, yet evaluations remain
+        confined to small-scale academic benchmarks. <strong>QUITO</strong> is a high-quality, billion-scale
+        CloudOps time series corpus from real-world Alipay production systems. Built atop QUITO,
+        <strong>QuitoBench</strong> benchmarks <strong>10 models</strong> &mdash; spanning deep learning,
+        foundation models, and statistical baselines &mdash; across <strong>232,200 evaluation instances</strong>
+        organized into <strong>8 balanced TSF regimes</strong>.
+      </p>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number">1.6B</div>
+          <div class="stat-label">Tokens</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">10</div>
+          <div class="stat-label">Models</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">232K</div>
+          <div class="stat-label">Eval Instances</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">8</div>
+          <div class="stat-label">TSF Regimes</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OVERALL LEADERBOARD (Table 3) ===== -->
+  <section class="content-section" id="leaderboard">
+    <div class="section-inner">
+      <h2>Overall Leaderboard</h2>
+      <div class="info-box">
+        <strong>Evaluation protocol:</strong> Rankings aggregated across 3 context lengths &times; 3 forecast horizons &times; 2 variate modes (18 settings per model). Lower rank and MAE are better.
+      </div>
+      <div class="filter-bar">
+        <span class="filter-label">Type</span>
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="dl">Deep Learning</button>
+        <button class="filter-btn" data-filter="fm">Foundation Model</button>
+        <button class="filter-btn" data-filter="stat">Statistical</button>
+      </div>
+      <div class="table-container">
+        <div class="table-scroll">
+          <table class="sortable" id="overall-table">
+            <thead>
+              <tr>
+                <th class="rank-col">Rank</th>
+                <th>Model</th>
+                <th>Type</th>
+                <th>Params</th>
+                <th class="score-col">MV Rank</th>
+                <th class="score-col">UV Rank</th>
+                <th class="score-col">Overall Rank</th>
+                <th class="score-col">MV MAE</th>
+                <th class="score-col">UV MAE</th>
+                <th class="score-col">Overall MAE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr data-type="dl">
+                <td class="rank-col"><span class="rank-badge rank-1">1</span></td>
+                <td class="model-col">PatchTST</td>
+                <td><span class="model-type dl">DL</span></td>
+                <td>2.3M</td>
+                <td class="score-col">2.8</td>
+                <td class="score-col">3.1</td>
+                <td class="score-col best-val">2.9</td>
+                <td class="score-col">0.341</td>
+                <td class="score-col">0.328</td>
+                <td class="score-col best-val">0.335</td>
+              </tr>
+              <tr data-type="dl">
+                <td class="rank-col"><span class="rank-badge rank-2">2</span></td>
+                <td class="model-col">iTransformer</td>
+                <td><span class="model-type dl">DL</span></td>
+                <td>5.5M</td>
+                <td class="score-col">3.2</td>
+                <td class="score-col">2.8</td>
+                <td class="score-col">3.0</td>
+                <td class="score-col">0.346</td>
+                <td class="score-col">0.325</td>
+                <td class="score-col">0.336</td>
+              </tr>
+              <tr data-type="dl">
+                <td class="rank-col"><span class="rank-badge rank-3">3</span></td>
+                <td class="model-col">CrossFormer</td>
+                <td><span class="model-type dl">DL</span></td>
+                <td>1.9M</td>
+                <td class="score-col">3.5</td>
+                <td class="score-col">3.6</td>
+                <td class="score-col">3.6</td>
+                <td class="score-col">0.352</td>
+                <td class="score-col">0.339</td>
+                <td class="score-col">0.346</td>
+              </tr>
+              <tr data-type="dl">
+                <td class="rank-col"><span class="rank-badge rank-other">4</span></td>
+                <td class="model-col">TSMixer</td>
+                <td><span class="model-type dl">DL</span></td>
+                <td>0.6M</td>
+                <td class="score-col">4.1</td>
+                <td class="score-col">4.3</td>
+                <td class="score-col">4.2</td>
+                <td class="score-col">0.358</td>
+                <td class="score-col">0.349</td>
+                <td class="score-col">0.354</td>
+              </tr>
+              <tr data-type="fm">
+                <td class="rank-col"><span class="rank-badge rank-other">5</span></td>
+                <td class="model-col">Chronos-2</td>
+                <td><span class="model-type fm">FM</span></td>
+                <td>710M</td>
+                <td class="score-col">4.5</td>
+                <td class="score-col">3.9</td>
+                <td class="score-col">4.2</td>
+                <td class="score-col">0.362</td>
+                <td class="score-col">0.338</td>
+                <td class="score-col">0.350</td>
+              </tr>
+              <tr data-type="dl">
+                <td class="rank-col"><span class="rank-badge rank-other">6</span></td>
+                <td class="model-col">DLinear</td>
+                <td><span class="model-type dl">DL</span></td>
+                <td>0.1M</td>
+                <td class="score-col">5.0</td>
+                <td class="score-col">5.2</td>
+                <td class="score-col">5.1</td>
+                <td class="score-col">0.369</td>
+                <td class="score-col">0.358</td>
+                <td class="score-col">0.364</td>
+              </tr>
+              <tr data-type="fm">
+                <td class="rank-col"><span class="rank-badge rank-other">7</span></td>
+                <td class="model-col">TimesFM-2.5</td>
+                <td><span class="model-type fm">FM</span></td>
+                <td>200M</td>
+                <td class="score-col">5.3</td>
+                <td class="score-col">5.0</td>
+                <td class="score-col">5.2</td>
+                <td class="score-col">0.372</td>
+                <td class="score-col">0.355</td>
+                <td class="score-col">0.364</td>
+              </tr>
+              <tr data-type="fm">
+                <td class="rank-col"><span class="rank-badge rank-other">8</span></td>
+                <td class="model-col">TiRex-Zero</td>
+                <td><span class="model-type fm">FM</span></td>
+                <td>8M</td>
+                <td class="score-col">5.8</td>
+                <td class="score-col">5.5</td>
+                <td class="score-col">5.7</td>
+                <td class="score-col">0.378</td>
+                <td class="score-col">0.362</td>
+                <td class="score-col">0.370</td>
+              </tr>
+              <tr data-type="dl">
+                <td class="rank-col"><span class="rank-badge rank-other">9</span></td>
+                <td class="model-col">Pyraformer</td>
+                <td><span class="model-type dl">DL</span></td>
+                <td>1.8M</td>
+                <td class="score-col">7.2</td>
+                <td class="score-col">7.0</td>
+                <td class="score-col">7.1</td>
+                <td class="score-col">0.401</td>
+                <td class="score-col">0.392</td>
+                <td class="score-col">0.397</td>
+              </tr>
+              <tr data-type="stat">
+                <td class="rank-col"><span class="rank-badge rank-other">10</span></td>
+                <td class="model-col">SNaive</td>
+                <td><span class="model-type stat">Stat</span></td>
+                <td>&mdash;</td>
+                <td class="score-col">8.5</td>
+                <td class="score-col">8.1</td>
+                <td class="score-col">8.3</td>
+                <td class="score-col">0.425</td>
+                <td class="score-col">0.411</td>
+                <td class="score-col">0.418</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="section-note">Data from Table 3. Click column headers to sort. DL = Deep Learning, FM = Foundation Model, Stat = Statistical Baseline.</p>
+    </div>
+  </section>
+
+  <!-- ===== CONTEXT-LENGTH ANALYSIS (Table 4) ===== -->
+  <section class="content-section alt-bg" id="context-length">
+    <div class="section-inner">
+      <h2>Context-Length Analysis</h2>
+      <div class="info-box">
+        <strong>Context-length crossover:</strong> DL models win at short context (L=96), but FM models overtake at longer contexts (L&ge;576).
+      </div>
+      <div class="table-container">
+        <div class="table-scroll">
+          <table class="sortable" id="context-table">
+            <thead>
+              <tr>
+                <th>Context Length (L)</th>
+                <th class="score-col">Best FM MAE</th>
+                <th class="score-col">Best DL MAE</th>
+                <th class="score-col">Gap (%)</th>
+                <th>Winner</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>96</td>
+                <td class="score-col">0.392</td>
+                <td class="score-col best-val">0.354</td>
+                <td class="score-col">+10.7%</td>
+                <td><span class="model-type dl">DL</span></td>
+              </tr>
+              <tr>
+                <td>576</td>
+                <td class="score-col best-val">0.331</td>
+                <td class="score-col">0.338</td>
+                <td class="score-col">&minus;2.1%</td>
+                <td><span class="model-type fm">FM</span></td>
+              </tr>
+              <tr>
+                <td>1024</td>
+                <td class="score-col best-val">0.318</td>
+                <td class="score-col">0.329</td>
+                <td class="score-col">&minus;3.3%</td>
+                <td><span class="model-type fm">FM</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="section-note">Data from Table 4. Gap = (FM &minus; DL) / DL &times; 100%.</p>
+    </div>
+  </section>
+
+  <!-- ===== TSF REGIME ANALYSIS (Table 5) ===== -->
+  <section class="content-section" id="tsf-regime">
+    <div class="section-inner">
+      <h2>TSF Regime Analysis</h2>
+      <div class="info-box">
+        <strong>Regime design:</strong> 2&times;2&times;2 factorization (Forecastability &times; Trend &times; Seasonality, each High/Low). Each cell contains ~12.5% of evaluation instances.
+      </div>
+      <div class="table-container">
+        <div class="table-scroll">
+          <table class="sortable" id="regime-table">
+            <thead>
+              <tr>
+                <th>Cell</th>
+                <th>Forecastability</th>
+                <th>Trend</th>
+                <th>Seasonality</th>
+                <th class="score-col">CrossFormer MAE</th>
+                <th class="score-col">Chronos-2 MAE</th>
+                <th>Winner</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td><span class="level-badge high">High</span></td>
+                <td><span class="level-badge high">High</span></td>
+                <td><span class="level-badge high">High</span></td>
+                <td class="score-col best-val">0.198</td>
+                <td class="score-col">0.212</td>
+                <td><span class="model-type dl">DL</span></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><span class="level-badge high">High</span></td>
+                <td><span class="level-badge high">High</span></td>
+                <td><span class="level-badge low">Low</span></td>
+                <td class="score-col best-val">0.215</td>
+                <td class="score-col">0.228</td>
+                <td><span class="model-type dl">DL</span></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><span class="level-badge high">High</span></td>
+                <td><span class="level-badge low">Low</span></td>
+                <td><span class="level-badge high">High</span></td>
+                <td class="score-col best-val">0.231</td>
+                <td class="score-col">0.245</td>
+                <td><span class="model-type dl">DL</span></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td><span class="level-badge high">High</span></td>
+                <td><span class="level-badge low">Low</span></td>
+                <td><span class="level-badge low">Low</span></td>
+                <td class="score-col">0.256</td>
+                <td class="score-col best-val">0.249</td>
+                <td><span class="model-type fm">FM</span></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td><span class="level-badge low">Low</span></td>
+                <td><span class="level-badge high">High</span></td>
+                <td><span class="level-badge high">High</span></td>
+                <td class="score-col">0.412</td>
+                <td class="score-col best-val">0.398</td>
+                <td><span class="model-type fm">FM</span></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td><span class="level-badge low">Low</span></td>
+                <td><span class="level-badge high">High</span></td>
+                <td><span class="level-badge low">Low</span></td>
+                <td class="score-col">0.438</td>
+                <td class="score-col best-val">0.425</td>
+                <td><span class="model-type fm">FM</span></td>
+              </tr>
+              <tr>
+                <td>7</td>
+                <td><span class="level-badge low">Low</span></td>
+                <td><span class="level-badge low">Low</span></td>
+                <td><span class="level-badge high">High</span></td>
+                <td class="score-col">0.465</td>
+                <td class="score-col best-val">0.451</td>
+                <td><span class="model-type fm">FM</span></td>
+              </tr>
+              <tr>
+                <td>8</td>
+                <td><span class="level-badge low">Low</span></td>
+                <td><span class="level-badge low">Low</span></td>
+                <td><span class="level-badge low">Low</span></td>
+                <td class="score-col">0.502</td>
+                <td class="score-col best-val">0.489</td>
+                <td><span class="model-type fm">FM</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="section-note">Data from Table 5. CrossFormer = best DL model, Chronos-2 = best FM.</p>
+    </div>
+  </section>
+
+  <!-- ===== PARAMETER EFFICIENCY (Table 8) ===== -->
+  <section class="content-section alt-bg" id="efficiency">
+    <div class="section-inner">
+      <h2>Parameter Efficiency</h2>
+      <div class="info-box">
+        <strong>59&times; more efficient:</strong> Compact DL models match or exceed FM performance at a fraction of the parameter budget.
+      </div>
+      <div class="table-container">
+        <div class="table-scroll">
+          <table class="sortable" id="efficiency-table">
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th class="score-col">Foundation Models</th>
+                <th class="score-col">Deep Learning</th>
+                <th>DL Advantage</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="model-col">Best MAE</td>
+                <td class="score-col">0.350</td>
+                <td class="score-col best-val">0.335</td>
+                <td><span class="model-type dl">4.3% lower</span></td>
+              </tr>
+              <tr>
+                <td class="model-col">Best Model Params</td>
+                <td class="score-col">710M</td>
+                <td class="score-col best-val">2.3M</td>
+                <td><span class="model-type dl">309&times; fewer</span></td>
+              </tr>
+              <tr>
+                <td class="model-col">Median MAE</td>
+                <td class="score-col">0.364</td>
+                <td class="score-col best-val">0.354</td>
+                <td><span class="model-type dl">2.7% lower</span></td>
+              </tr>
+              <tr>
+                <td class="model-col">Min Params for MAE &lt; 0.36</td>
+                <td class="score-col">200M</td>
+                <td class="score-col best-val">0.6M</td>
+                <td><span class="model-type dl">333&times; fewer</span></td>
+              </tr>
+              <tr>
+                <td class="model-col">MAE per 1M Params</td>
+                <td class="score-col">0.00049</td>
+                <td class="score-col best-val">0.146</td>
+                <td>&mdash;</td>
+              </tr>
+              <tr>
+                <td class="model-col">Param Efficiency Ratio</td>
+                <td class="score-col">1&times;</td>
+                <td class="score-col best-val">59&times;</td>
+                <td><span class="model-type dl">59&times; more efficient</span></td>
+              </tr>
+              <tr>
+                <td class="model-col">Training GPU-Hours (est.)</td>
+                <td class="score-col">&gt;10,000</td>
+                <td class="score-col best-val">&lt;200</td>
+                <td><span class="model-type dl">50&times; cheaper</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="section-note">Data from Table 8.</p>
+    </div>
+  </section>
+
+  <!-- ===== FORECASTABILITY & DIFFICULTY (Table 9) ===== -->
+  <section class="content-section" id="difficulty">
+    <div class="section-inner">
+      <h2>Forecastability &amp; Difficulty</h2>
+      <div class="info-box">
+        <strong>3.64&times; difficulty gap:</strong> Forecastability (spectral entropy) drives a 3.64&times; larger performance gap than trend or seasonality, making it the dominant difficulty factor.
+      </div>
+      <div class="table-container">
+        <div class="table-scroll">
+          <table class="sortable" id="difficulty-table">
+            <thead>
+              <tr>
+                <th class="rank-col">Rank</th>
+                <th>Forecastability</th>
+                <th>Trend</th>
+                <th>Seasonality</th>
+                <th class="score-col">Mean MAE</th>
+                <th>Difficulty</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="rank-col"><span class="rank-badge rank-1">1</span></td>
+                <td><span class="level-badge high">High</span></td>
+                <td><span class="level-badge high">High</span></td>
+                <td><span class="level-badge high">High</span></td>
+                <td class="score-col best-val">0.218</td>
+                <td><span class="difficulty-badge easy">Easiest</span></td>
+              </tr>
+              <tr>
+                <td class="rank-col"><span class="rank-badge rank-2">2</span></td>
+                <td><span class="level-badge high">High</span></td>
+                <td><span class="level-badge high">High</span></td>
+                <td><span class="level-badge low">Low</span></td>
+                <td class="score-col">0.237</td>
+                <td><span class="difficulty-badge easy">Easy</span></td>
+              </tr>
+              <tr>
+                <td class="rank-col"><span class="rank-badge rank-3">3</span></td>
+                <td><span class="level-badge high">High</span></td>
+                <td><span class="level-badge low">Low</span></td>
+                <td><span class="level-badge high">High</span></td>
+                <td class="score-col">0.255</td>
+                <td><span class="difficulty-badge easy">Easy</span></td>
+              </tr>
+              <tr>
+                <td class="rank-col"><span class="rank-badge rank-other">4</span></td>
+                <td><span class="level-badge high">High</span></td>
+                <td><span class="level-badge low">Low</span></td>
+                <td><span class="level-badge low">Low</span></td>
+                <td class="score-col">0.274</td>
+                <td><span class="difficulty-badge medium">Medium</span></td>
+              </tr>
+              <tr>
+                <td class="rank-col"><span class="rank-badge rank-other">5</span></td>
+                <td><span class="level-badge low">Low</span></td>
+                <td><span class="level-badge high">High</span></td>
+                <td><span class="level-badge high">High</span></td>
+                <td class="score-col">0.428</td>
+                <td><span class="difficulty-badge medium">Medium</span></td>
+              </tr>
+              <tr>
+                <td class="rank-col"><span class="rank-badge rank-other">6</span></td>
+                <td><span class="level-badge low">Low</span></td>
+                <td><span class="level-badge high">High</span></td>
+                <td><span class="level-badge low">Low</span></td>
+                <td class="score-col">0.456</td>
+                <td><span class="difficulty-badge hard">Hard</span></td>
+              </tr>
+              <tr>
+                <td class="rank-col"><span class="rank-badge rank-other">7</span></td>
+                <td><span class="level-badge low">Low</span></td>
+                <td><span class="level-badge low">Low</span></td>
+                <td><span class="level-badge high">High</span></td>
+                <td class="score-col">0.481</td>
+                <td><span class="difficulty-badge hard">Hard</span></td>
+              </tr>
+              <tr>
+                <td class="rank-col"><span class="rank-badge rank-other">8</span></td>
+                <td><span class="level-badge low">Low</span></td>
+                <td><span class="level-badge low">Low</span></td>
+                <td><span class="level-badge low">Low</span></td>
+                <td class="score-col">0.521</td>
+                <td><span class="difficulty-badge hard">Hardest</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="section-note">Data from Table 9. The gap between high-forecastability (rows 1-4) and low-forecastability (rows 5-8) groups is 3.64&times;.</p>
+    </div>
+  </section>
+
+  <!-- ===== CITATION ===== -->
+  <section class="content-section alt-bg" id="citation">
+    <div class="section-inner">
+      <h2>Citation</h2>
+      <p>If you use QuitoBench in your research, please cite our paper:</p>
+      <div class="bibtex-container">
+        <pre class="bibtex-block"><code id="bibtex-code">@article{quitobench2025,
+  title     = {QuitoBench: A High-Quality Billion-Scale CloudOps
+               Time Series Benchmark},
+  author    = {Ant Group Research Team},
+  journal   = {arXiv preprint},
+  year      = {2025},
+  url       = {https://github.com/alipay/quito-10b}
+}</code></pre>
+        <button class="copy-btn" id="copy-bibtex">Copy BibTeX</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="site-footer">
+    <p>QuitoBench is developed by <a href="https://www.antgroup.com" target="_blank" rel="noopener">Ant Group</a>. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC-BY 4.0</a>.</p>
+    <p style="margin-top:0.4rem;">Website design inspired by <a href="https://livecodebench.github.io/" target="_blank" rel="noopener">LiveCodeBench</a>.</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
