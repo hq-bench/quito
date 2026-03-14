@@ -228,6 +228,41 @@ document.addEventListener('DOMContentLoaded', () => {
     if (band) statsObs.observe(band);
   }
 
+  // ===== CONTENT TABS =====
+  const tabBtns = document.querySelectorAll('.tab-btn[data-tab]');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = btn.dataset.tab;
+
+      tabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      tabContents.forEach(tc => {
+        tc.classList.toggle('active', tc.id === targetId);
+      });
+
+      // Update nav links visibility based on active tab
+      const analysisLinks = ['#context-length', '#tsf-regime', '#mode-analysis', '#horizon', '#efficiency', '#difficulty', '#sensitivity', '#pathological', '#cross-benchmark'];
+      navAnchors.forEach(a => {
+        const href = a.getAttribute('href');
+        if (analysisLinks.includes(href)) {
+          a.parentElement.style.display = targetId === 'analysis-tab' ? '' : 'none';
+        }
+      });
+    });
+  });
+
+  // Hide analysis nav links on initial load
+  const analysisNavLinks = ['#context-length', '#tsf-regime', '#mode-analysis', '#horizon', '#efficiency', '#difficulty', '#sensitivity', '#pathological', '#cross-benchmark'];
+  navAnchors.forEach(a => {
+    const href = a.getAttribute('href');
+    if (analysisNavLinks.includes(href)) {
+      a.parentElement.style.display = 'none';
+    }
+  });
+
   // ===== SCROLL REVEAL =====
   const revealTargets = document.querySelectorAll('.table-wrap, .info-box, .bibtex-wrap, .stats-band, .news-list');
   revealTargets.forEach(el => el.classList.add('reveal'));

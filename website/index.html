@@ -7,7 +7,7 @@
   <meta name="description" content="QuitoBench is a billion-scale CloudOps time series forecasting benchmark from Ant Group, evaluating 10 models across 232,200 instances.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -42,7 +42,7 @@
     <div class="hero-inner">
       <span class="eyebrow">Billion-Scale CloudOps Time Series Benchmark</span>
       <h1><span class="solid">Quito</span><span class="outline">Bench</span></h1>
-      <p class="hero-sub">10 models &middot; 232,200 eval instances &middot; 8 TSF regimes<br>Ant Group &amp; Alipay</p>
+      <p class="hero-sub">10 models &middot; 232,200 eval instances &middot; 8 TSF regimes<br>Alipay</p>
       <div class="hero-actions">
         <a href="#" class="btn-cta" title="Paper (coming soon)">Read Paper</a>
         <a href="https://github.com/alipay/quito-10b" class="btn-ghost" target="_blank" rel="noopener">GitHub</a>
@@ -99,13 +99,24 @@
       <p>
         Time series foundation models (FMs) promise universal forecasting, yet evaluations remain
         confined to small-scale academic benchmarks. <strong>QUITO</strong> is a high-quality, billion-scale
-        CloudOps time series corpus from real-world Alipay production systems. Built atop QUITO,
+        CloudOps time series corpus from real-world Alipay systems. Built atop QUITO,
         <strong>QuitoBench</strong> benchmarks <strong>10 models</strong>&mdash;spanning deep learning,
         foundation models, and statistical baselines&mdash;across <strong>232,200 evaluation instances</strong>
         organized into <strong>8 balanced TSF regimes</strong>.
       </p>
     </div>
   </section>
+
+  <!-- ===== CONTENT TABS ===== -->
+  <div class="content-tabs" id="content-tabs">
+    <div class="tab-bar">
+      <button class="tab-btn active" data-tab="leaderboard-tab">Leaderboard</button>
+      <button class="tab-btn" data-tab="analysis-tab">Detailed Analysis</button>
+    </div>
+  </div>
+
+  <!-- ===== TAB: LEADERBOARD ===== -->
+  <div class="tab-content active" id="leaderboard-tab">
 
   <!-- ===== MAIN RESULTS: OVERALL LEADERBOARD ===== -->
   <section class="section" id="leaderboard">
@@ -255,6 +266,11 @@
       <p class="table-note">Click column headers to sort. DL = Deep Learning, FM = Foundation Model.</p>
     </div>
   </section>
+
+  </div><!-- end leaderboard-tab -->
+
+  <!-- ===== TAB: DETAILED ANALYSIS ===== -->
+  <div class="tab-content" id="analysis-tab">
 
   <!-- ===== ANALYSIS I: CONTEXT-LENGTH CROSSOVER ===== -->
   <section class="section" id="context-length">
@@ -1038,6 +1054,8 @@
     </div>
   </section>
 
+  </div><!-- end analysis-tab -->
+
   <!-- ===== CITATION ===== -->
   <section class="section" id="citation">
     <div class="section-inner">
@@ -1047,7 +1065,7 @@
         <pre class="bibtex"><code id="bibtex-code">@article{quitobench2025,
   title     = {QuitoBench: A High-Quality Billion-Scale CloudOps
                Time Series Benchmark},
-  author    = {Ant Group Research Team},
+  author    = {Alipay Research Team},
   journal   = {arXiv preprint},
   year      = {2025},
   url       = {https://github.com/alipay/quito-10b}
@@ -1061,6 +1079,9 @@
   <section class="section" id="visitor-map">
     <div class="section-inner visitor-map-center">
       <h2 class="section-title">Visitor Map</h2>
+      <div class="visitor-badge" style="margin-bottom: 1rem;">
+        <img src="https://hits.sh/hq-bench.github.io/quito.svg?view=total&color=f59e0b&labelColor=0d1117&label=Total%20Visitors&style=flat" alt="Visitor count" height="24">
+      </div>
       <div class="globe-container">
         <script type="text/javascript" id="clstr_globe"
           src="//clustrmaps.com/globe.js?d=REPLACE_WITH_YOUR_CLUSTRMAPS_ID"></script>
@@ -1084,7 +1105,7 @@
 
   <!-- ===== FOOTER ===== -->
   <footer class="site-footer">
-    <p>QuitoBench &mdash; developed by <a href="https://www.antgroup.com" target="_blank" rel="noopener">Ant Group</a>. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC-BY 4.0</a>.</p>
+    <p>QuitoBench &mdash; developed by <a href="https://www.alipay.com" target="_blank" rel="noopener">Alipay</a>. Licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC-BY 4.0</a>.</p>
   </footer>
 
   <script src="assets/js/main.js"></script>
