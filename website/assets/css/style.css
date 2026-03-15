@@ -310,6 +310,36 @@ a:hover { color: var(--amber); }
 
 .section p strong { color: var(--text); }
 
+/* ===== FINDINGS LIST ===== */
+.findings-list {
+  list-style: none;
+  margin: 0.5rem 0 0.85rem;
+  padding: 0;
+}
+
+.findings-list li {
+  position: relative;
+  padding: 0.4rem 0 0.4rem 1.4rem;
+  font-size: 0.88rem;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+
+.findings-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.75rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--amber);
+}
+
+.findings-list li strong {
+  color: var(--text);
+}
+
 /* ===== NEWS ===== */
 .news-list { list-style: none; }
 

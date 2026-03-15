@@ -2,13 +2,21 @@
 
 [![Project Page](https://img.shields.io/badge/Project-Page-f59e0b?style=flat-square)](https://hq-bench.github.io/quito)
 [![GitHub](https://img.shields.io/badge/GitHub-Repo-181717?style=flat-square&logo=github)](https://github.com/alipay/quito-10b)
+[![Dataset](https://img.shields.io/badge/HuggingFace-Dataset-ffd21e?style=flat-square&logo=huggingface)](https://huggingface.co/datasets/hq-bench/quitobench)
 [![Paper](https://img.shields.io/badge/arXiv-Paper-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)
 [![License](https://img.shields.io/badge/License-CC--BY%204.0-green?style=flat-square)](https://creativecommons.org/licenses/by/4.0/)
 [![Visitors](https://hits.sh/hq-bench.github.io/quito.svg?view=total&color=f59e0b&labelColor=0d1117&label=Visitors&style=flat-square)](https://hits.sh/hq-bench.github.io/quito)
 
-**A High-Quality, Billion-Scale CloudOps Time Series Forecasting Benchmark**
+**A High-Quality Open Time Series Forecasting Benchmark**
 
-QuitoBench is a comprehensive benchmark for evaluating time series forecasting models on real-world CloudOps data from Alipay production systems. It evaluates **10 models** — spanning deep learning, foundation models, and statistical baselines — across **232,200 evaluation instances** organized into **8 balanced TSF regimes**.
+Time series forecasting is critical across finance, healthcare, and cloud computing, yet progress is constrained by a fundamental bottleneck: the scarcity of large-scale, high-quality benchmarks. **QuitoBench** is a regime-balanced benchmark for time series forecasting with coverage across **8 trend x seasonality x forecastability (TSF) regimes**, designed to capture forecasting-relevant properties rather than application-defined domain labels.
+
+The benchmark is built upon **Quito**, a billion-scale time series corpus of application traffic from Alipay spanning nine business domains. Benchmarking **10 models** — from deep learning, foundation models, and statistical baselines — across **232,200 evaluation instances**, we report four key findings:
+
+- A **context-length crossover** where deep learning models lead at short context (L=96) but foundation models dominate at long context (L>=576)
+- **Forecastability is the dominant difficulty driver**, producing a 3.64x MAE gap across regimes
+- Deep learning models **match or surpass foundation models at 59x fewer parameters**
+- Both model families benefit from more training data, but **deep learning exhibits substantially stronger data scaling**
 
 ## Key Statistics
 
@@ -79,8 +87,8 @@ If you use QuitoBench in your research, please cite:
 
 ```bibtex
 @article{quitobench2025,
-  title     = {QuitoBench: A High-Quality Billion-Scale CloudOps
-               Time Series Benchmark},
+  title     = {QuitoBench: A High-Quality Open Time Series
+               Forecasting Benchmark},
   author    = {Alipay Research Team},
   journal   = {arXiv preprint},
   year      = {2025},
