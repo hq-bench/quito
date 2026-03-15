@@ -705,6 +705,10 @@ tbody tr:hover .rank-badge { transform: scale(1.1); }
   display: flex;
   justify-content: center;
   margin-top: 0.5rem;
+  max-width: 300px;
+  max-height: 300px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .globe-placeholder { opacity: 0.5; }
