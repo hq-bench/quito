@@ -18,15 +18,6 @@ The benchmark is built upon **Quito**, a billion-scale time series corpus of app
 - Deep learning models **match or surpass foundation models at 59x fewer parameters**
 - Both model families benefit from more training data, but **deep learning exhibits substantially stronger data scaling**
 
-## Key Statistics
-
-| Metric | Value |
-|--------|-------|
-| Total Tokens | 1.6 Billion |
-| Models Evaluated | 10 |
-| Evaluation Instances | 232,200 |
-| TSF Regimes | 8 |
-
 ## Benchmark Analyses
 
 QuitoBench provides eight structured analyses:
@@ -71,8 +62,8 @@ python -m http.server 8000
 | Rank | Model | Category | Overall MAE |
 |------|-------|----------|-------------|
 | 1 | CrossFormer | Deep Learning | 0.279 |
-| 2 | Chronos | Foundation Model | 0.314 |
-| 3 | TimesFM | Foundation Model | 0.319 |
+| 2 | Chronos-2 | Foundation Model | 0.314 |
+| 3 | TimesFM-2.5 | Foundation Model | 0.319 |
 | 4 | PatchTST | Deep Learning | 0.299 |
 | 5 | TiRex | Foundation Model | 0.322 |
 | 6 | iTransformer | Deep Learning | 0.301 |

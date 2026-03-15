@@ -42,7 +42,7 @@
     <div class="hero-inner">
       <span class="eyebrow">A High-Quality Open Time Series Forecasting Benchmark</span>
       <h1><span class="solid">Quito</span><span class="outline">Bench</span></h1>
-      <p class="hero-sub">10 models &middot; 232,200 eval instances &middot; 8 TSF regimes &middot; Billion-scale corpus<br>Alipay</p>
+      <p class="hero-authors"><!-- Author names will be added here --></p>
       <div class="hero-actions">
         <a href="#" class="btn-cta" title="Paper (coming soon)">Read Paper</a>
         <a href="https://github.com/alipay/quito-10b" class="btn-ghost" target="_blank" rel="noopener">GitHub</a>
@@ -51,31 +51,6 @@
     </div>
   </section>
 
-  <!-- ===== STATS BAND ===== -->
-  <section class="stats-band" id="stats">
-    <div class="stats-inner">
-      <div class="stat">
-        <div class="stat-bar"></div>
-        <span class="stat-num">1.6B</span>
-        <span class="stat-label">Tokens</span>
-      </div>
-      <div class="stat">
-        <div class="stat-bar"></div>
-        <span class="stat-num">10</span>
-        <span class="stat-label">Models</span>
-      </div>
-      <div class="stat">
-        <div class="stat-bar"></div>
-        <span class="stat-num">232K</span>
-        <span class="stat-label">Eval Instances</span>
-      </div>
-      <div class="stat">
-        <div class="stat-bar"></div>
-        <span class="stat-num">8</span>
-        <span class="stat-label">TSF Regimes</span>
-      </div>
-    </div>
-  </section>
 
   <!-- ===== NEWS ===== -->
   <section class="section" id="news">
@@ -127,7 +102,7 @@
     <div class="section-inner">
       <h2 class="section-title">Main Results: Overall Leaderboard</h2>
       <div class="info-box">
-        <strong>Evaluation protocol:</strong> Mean MAE and mean rank across 232,200 instances (3 context lengths &times; 3 horizons &times; 2 variate modes). Lower rank and MAE are better. CrossFormer and Chronos are statistically indistinguishable (Friedman <em>p</em>&nbsp;=&nbsp;0.49).
+        <strong>Evaluation protocol:</strong> Mean MAE and mean rank across 232,200 instances (3 context lengths &times; 3 horizons &times; 2 variate modes). Lower rank and MAE are better. CrossFormer and Chronos-2 are statistically indistinguishable (Friedman <em>p</em>&nbsp;=&nbsp;0.49).
       </div>
       <div class="filter-bar">
         <span class="filter-label">Category</span>
@@ -166,7 +141,7 @@
               </tr>
               <tr data-type="fm">
                 <td class="rank-col"><span class="rank-badge rank-2">2</span></td>
-                <td class="model-name">Chronos</td>
+                <td class="model-name">Chronos-2</td>
                 <td><span class="badge badge-fm">FM</span></td>
                 <td class="num-col">3.21</td>
                 <td class="num-col">3.51</td>
@@ -177,7 +152,7 @@
               </tr>
               <tr data-type="fm">
                 <td class="rank-col"><span class="rank-badge rank-3">3</span></td>
-                <td class="model-name">TimesFM</td>
+                <td class="model-name">TimesFM-2.5</td>
                 <td><span class="badge badge-fm">FM</span></td>
                 <td class="num-col">4.21</td>
                 <td class="num-col">4.21</td>
@@ -330,7 +305,7 @@
     <div class="section-inner">
       <h2 class="section-title">Analysis II: TSF-Regime Specialization</h2>
       <div class="info-box">
-        <strong>Complementary specialization:</strong> At the category level, FM wins 6 of 8 cells; however, the best single DL model (CrossFormer) beats the best FM (Chronos) in 4 of 8 cells&mdash;primarily those without seasonality&mdash;with up to 38.4% advantage. Regime labels follow <em>Trend&ndash;Seasonality&ndash;Forecastability</em> convention (threshold 0.4).
+        <strong>Complementary specialization:</strong> At the category level, FM wins 6 of 8 cells; however, the best single DL model (CrossFormer) beats the best FM (Chronos-2) in 4 of 8 cells&mdash;primarily those without seasonality&mdash;with up to 38.4% advantage. Regime labels follow <em>Trend&ndash;Seasonality&ndash;Forecastability</em> convention (threshold 0.4).
       </div>
       <div class="table-wrap">
         <div class="table-scroll">
@@ -342,7 +317,7 @@
                 <th>Seasonality</th>
                 <th>Forecastability</th>
                 <th class="num-col">CrossFormer MAE</th>
-                <th class="num-col">Chronos MAE</th>
+                <th class="num-col">Chronos-2 MAE</th>
                 <th>Winner</th>
               </tr>
             </thead>
@@ -423,7 +398,7 @@
           </table>
         </div>
       </div>
-      <p class="table-note">CrossFormer = best DL model, Chronos = best FM. Highlighted DL wins show percentage advantage.</p>
+      <p class="table-note">CrossFormer = best DL model, Chronos-2 = best FM. Highlighted DL wins show percentage advantage.</p>
     </div>
   </section>
 
@@ -432,7 +407,7 @@
     <div class="section-inner">
       <h2 class="section-title">Analysis III: Forecasting Mode</h2>
       <div class="info-box">
-        <strong>Variate mode preference:</strong> MV/UV differences are small and not statistically significant overall (paired <em>t</em>-test <em>p</em>&nbsp;=&nbsp;0.74), but the direction is model-family-specific. FM models benefit from multivariate context (Chronos +2.3% in MV), while most DL models favour UV mode (CrossFormer +2.5% in UV). Differences below 0.1% are marked Neutral.
+        <strong>Variate mode preference:</strong> MV/UV differences are small and not statistically significant overall (paired <em>t</em>-test <em>p</em>&nbsp;=&nbsp;0.74), but the direction is model-family-specific. FM models benefit from multivariate context (Chronos-2 +2.3% in MV), while most DL models favour UV mode (CrossFormer +2.5% in UV). Differences below 0.1% are marked Neutral.
       </div>
       <div class="table-wrap">
         <div class="table-scroll">
@@ -483,14 +458,14 @@
                 <td>MV (+0.7%)</td>
               </tr>
               <tr>
-                <td class="model-name">Chronos</td>
+                <td class="model-name">Chronos-2</td>
                 <td><span class="badge badge-fm">FM</span></td>
                 <td class="num-col">0.310</td>
                 <td class="num-col">0.317</td>
                 <td>MV (+2.3%)</td>
               </tr>
               <tr>
-                <td class="model-name">TimesFM</td>
+                <td class="model-name">TimesFM-2.5</td>
                 <td><span class="badge badge-fm">FM</span></td>
                 <td class="num-col">0.319</td>
                 <td class="num-col">0.319</td>
@@ -579,7 +554,7 @@
                 <td class="num-col">+14.8%</td>
               </tr>
               <tr data-type="fm">
-                <td class="model-name">Chronos</td>
+                <td class="model-name">Chronos-2</td>
                 <td><span class="badge badge-fm">FM</span></td>
                 <td class="num-col">0.262</td>
                 <td class="num-col">0.321</td>
@@ -588,7 +563,7 @@
                 <td class="num-col">+37.0%</td>
               </tr>
               <tr data-type="fm">
-                <td class="model-name">TimesFM</td>
+                <td class="model-name">TimesFM-2.5</td>
                 <td><span class="badge badge-fm">FM</span></td>
                 <td class="num-col">0.271</td>
                 <td class="num-col">0.329</td>
@@ -618,7 +593,7 @@
     <div class="section-inner">
       <h2 class="section-title">Analysis V: Parameter Return on Investment</h2>
       <div class="info-box">
-        <strong>59&times; fewer parameters:</strong> DL models (avg. 1.9M params) achieve statistically indistinguishable aggregate performance from FM models (avg. 110M params). CrossFormer at 1M params outranks every foundation model including Chronos at 100M.
+        <strong>59&times; fewer parameters:</strong> DL models (avg. 1.9M params) achieve statistically indistinguishable aggregate performance from FM models (avg. 110M params). CrossFormer at 1M params outranks every foundation model including Chronos-2 at 100M.
       </div>
       <div class="table-wrap">
         <div class="table-scroll">
@@ -837,7 +812,7 @@
                 <td class="num-col">1.55&times;</td>
               </tr>
               <tr>
-                <td class="model-name">TimesFM</td>
+                <td class="model-name">TimesFM-2.5</td>
                 <td class="num-col">0.235</td>
                 <td class="num-col">0.409</td>
                 <td class="num-col">1.74&times;</td>
@@ -849,7 +824,7 @@
                 <td class="num-col">1.74&times;</td>
               </tr>
               <tr>
-                <td class="model-name">Chronos</td>
+                <td class="model-name">Chronos-2</td>
                 <td class="num-col">0.230</td>
                 <td class="num-col">0.403</td>
                 <td class="num-col">1.75&times;</td>
@@ -889,13 +864,13 @@
               </tr>
               <tr>
                 <td class="rank-col"><span class="rank-badge rank-2">2</span></td>
-                <td class="model-name">Chronos</td>
+                <td class="model-name">Chronos-2</td>
                 <td class="num-col">0.628</td>
                 <td class="num-col">+4.6%</td>
               </tr>
               <tr>
                 <td class="rank-col"><span class="rank-badge rank-3">3</span></td>
-                <td class="model-name">TimesFM</td>
+                <td class="model-name">TimesFM-2.5</td>
                 <td class="num-col">0.632</td>
                 <td class="num-col">+5.2%</td>
               </tr>
@@ -979,7 +954,7 @@
                 <td>Tier 3 (Inconsistent)</td>
               </tr>
               <tr>
-                <td class="model-name">Chronos</td>
+                <td class="model-name">Chronos-2</td>
                 <td><span class="badge badge-fm">FM</span></td>
                 <td class="num-col">2</td>
                 <td class="num-col">2</td>
@@ -987,7 +962,7 @@
                 <td>Tier 1 (Highly Consistent)</td>
               </tr>
               <tr>
-                <td class="model-name">TimesFM</td>
+                <td class="model-name">TimesFM-2.5</td>
                 <td><span class="badge badge-fm">FM</span></td>
                 <td class="num-col">3</td>
                 <td class="num-col">3</td>

@@ -209,25 +209,6 @@ document.addEventListener('DOMContentLoaded', () => {
     sectionEls.forEach(s => navObs.observe(s));
   }
 
-  // ===== STATS BAND REVEAL =====
-  const stats = document.querySelectorAll('.stat');
-  if (stats.length) {
-    const statsObs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const cards = entry.target.querySelectorAll('.stat');
-          cards.forEach((card, i) => {
-            setTimeout(() => card.classList.add('revealed'), i * 120);
-          });
-          statsObs.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-
-    const band = document.querySelector('.stats-band');
-    if (band) statsObs.observe(band);
-  }
-
   // ===== CONTENT TABS =====
   const tabBtns = document.querySelectorAll('.tab-btn[data-tab]');
   const tabContents = document.querySelectorAll('.tab-content');
@@ -264,7 +245,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ===== SCROLL REVEAL =====
-  const revealTargets = document.querySelectorAll('.table-wrap, .info-box, .bibtex-wrap, .stats-band, .news-list');
+  const revealTargets = document.querySelectorAll('.table-wrap, .info-box, .bibtex-wrap, .news-list');
   revealTargets.forEach(el => el.classList.add('reveal'));
 
   const revealObs = new IntersectionObserver(entries => {
