@@ -78,16 +78,16 @@
     <div class="section-inner">
       <h2 class="section-title">About QuitoBench</h2>
       <p>
-        Time series forecasting is critical across finance, healthcare, and cloud computing, yet progress is constrained by a fundamental bottleneck: the scarcity of large-scale, high-quality benchmarks. <strong>QuitoBench</strong> is a regime-balanced benchmark for time series forecasting with coverage across <strong>8 trend&times;seasonality&times;forecastability (TSF) regimes</strong>, designed to capture forecasting-relevant properties rather than application-defined domain labels.
+        Time series forecasting is critical across finance, healthcare, and cloud computing, yet progress is constrained by a fundamental bottleneck: the scarcity of large-scale, high-quality benchmarks. QuitoBench is a regime-balanced benchmark for time series forecasting with coverage across 8 trend&times;seasonality&times;forecastability (TSF) regimes, designed to capture forecasting-relevant properties rather than application-defined domain labels.
       </p>
       <p>
-        The benchmark is built upon <strong>Quito</strong>, a billion-scale time series corpus of application traffic from Alipay spanning nine business domains. Benchmarking <strong>10 models</strong> from deep learning, foundation models, and statistical baselines across <strong>232,200 evaluation instances</strong>, we report four key findings:
+        The benchmark is built upon Quito, a billion-scale time series corpus of application traffic from Alipay spanning nine business domains. Benchmarking 10 models from deep learning, foundation models, and statistical baselines across 232,200 evaluation instances, we report four key findings:
       </p>
       <ul class="findings-list">
-        <li>A <strong>context-length crossover</strong> where deep learning models lead at short context (L=96) but foundation models dominate at long context (L&ge;576)</li>
-        <li><strong>Forecastability is the dominant difficulty driver</strong>, producing a 3.64&times; MAE gap across regimes</li>
-        <li>Deep learning models <strong>match or surpass foundation models at 59&times; fewer parameters</strong></li>
-        <li>Both model families benefit from more training data, but <strong>deep learning exhibits substantially stronger data scaling</strong></li>
+        <li>A context-length crossover where deep learning models lead at short context (L=96) but foundation models dominate at long context (L&ge;576)</li>
+        <li>Forecastability is the dominant difficulty driver, producing a 3.64&times; MAE gap across regimes</li>
+        <li>Deep learning models match or surpass foundation models at 59&times; fewer parameters</li>
+        <li>Both model families benefit from more training data, but deep learning exhibits substantially stronger data scaling</li>
       </ul>
     </div>
   </section>
@@ -108,7 +108,7 @@
     <div class="section-inner">
       <h2 class="section-title">Main Results: Overall Leaderboard</h2>
       <div class="info-box">
-        <strong>Evaluation protocol:</strong> Mean MAE and mean rank across 232,200 instances (3 context lengths &times; 3 horizons &times; 2 variate modes). Lower rank and MAE are better. CrossFormer and Chronos-2 are statistically indistinguishable (Friedman <em>p</em>&nbsp;=&nbsp;0.49).
+        Evaluation protocol: Mean MAE and mean rank across 232,200 instances (3 context lengths &times; 3 horizons &times; 2 variate modes). Lower rank and MAE are better. CrossFormer and Chronos-2 are statistically indistinguishable (Friedman <em>p</em>&nbsp;=&nbsp;0.49).
       </div>
       <div class="filter-bar">
         <span class="filter-label">Category</span>
@@ -262,7 +262,7 @@
     <div class="section-inner">
       <h2 class="section-title">Analysis I: Context-Length Crossover</h2>
       <div class="info-box">
-        <strong>Context-length crossover:</strong> DL models win by 24.6% at short context (L=96), but FM models overtake by 14.8&ndash;22.0% at longer contexts (L&ge;576). FM models improve 43&ndash;50% from L=96 to L=1024, whereas DL models improve only 7&ndash;12%.
+        Context-length crossover: DL models win by 24.6% at short context (L=96), but FM models overtake by 14.8&ndash;22.0% at longer contexts (L&ge;576). FM models improve 43&ndash;50% from L=96 to L=1024, whereas DL models improve only 7&ndash;12%.
       </div>
       <div class="table-wrap">
         <div class="table-scroll">
@@ -311,7 +311,7 @@
     <div class="section-inner">
       <h2 class="section-title">Analysis II: TSF-Regime Specialization</h2>
       <div class="info-box">
-        <strong>Complementary specialization:</strong> At the category level, FM wins 6 of 8 cells; however, the best single DL model (CrossFormer) beats the best FM (Chronos-2) in 4 of 8 cells&mdash;primarily those without seasonality&mdash;with up to 38.4% advantage. Regime labels follow <em>Trend&ndash;Seasonality&ndash;Forecastability</em> convention (threshold 0.4).
+        Complementary specialization: At the category level, FM wins 6 of 8 cells; however, the best single DL model (CrossFormer) beats the best FM (Chronos-2) in 4 of 8 cells&mdash;primarily those without seasonality&mdash;with up to 38.4% advantage. Regime labels follow <em>Trend&ndash;Seasonality&ndash;Forecastability</em> convention (threshold 0.4).
       </div>
       <div class="table-wrap">
         <div class="table-scroll">
@@ -413,7 +413,7 @@
     <div class="section-inner">
       <h2 class="section-title">Analysis III: Forecasting Mode</h2>
       <div class="info-box">
-        <strong>Variate mode preference:</strong> MV/UV differences are small and not statistically significant overall (paired <em>t</em>-test <em>p</em>&nbsp;=&nbsp;0.74), but the direction is model-family-specific. FM models benefit from multivariate context (Chronos-2 +2.3% in MV), while most DL models favour UV mode (CrossFormer +2.5% in UV). Differences below 0.1% are marked Neutral.
+        Variate mode preference: MV/UV differences are small and not statistically significant overall (paired <em>t</em>-test <em>p</em>&nbsp;=&nbsp;0.74), but the direction is model-family-specific. FM models benefit from multivariate context (Chronos-2 +2.3% in MV), while most DL models favour UV mode (CrossFormer +2.5% in UV). Differences below 0.1% are marked Neutral.
       </div>
       <div class="table-wrap">
         <div class="table-scroll">
@@ -497,7 +497,7 @@
     <div class="section-inner">
       <h2 class="section-title">Analysis IV: Forecast-Horizon Robustness</h2>
       <div class="info-box">
-        <strong>Horizon degradation:</strong> DLinear is the most horizon-robust model (+14.8% from H=48 to H=512), though at the cost of higher baseline MAE. Most models degrade 26&ndash;37%.
+        Horizon degradation: DLinear is the most horizon-robust model (+14.8% from H=48 to H=512), though at the cost of higher baseline MAE. Most models degrade 26&ndash;37%.
       </div>
       <div class="table-wrap">
         <div class="table-scroll">
@@ -599,7 +599,7 @@
     <div class="section-inner">
       <h2 class="section-title">Analysis V: Parameter Return on Investment</h2>
       <div class="info-box">
-        <strong>59&times; fewer parameters:</strong> DL models (avg. 1.9M params) achieve statistically indistinguishable aggregate performance from FM models (avg. 110M params). CrossFormer at 1M params outranks every foundation model including Chronos-2 at 100M.
+        59&times; fewer parameters: DL models (avg. 1.9M params) achieve statistically indistinguishable aggregate performance from FM models (avg. 110M params). CrossFormer at 1M params outranks every foundation model including Chronos-2 at 100M.
       </div>
       <div class="table-wrap">
         <div class="table-scroll">
@@ -668,7 +668,7 @@
     <div class="section-inner">
       <h2 class="section-title">Analysis VI: Forecastability as Dominant Difficulty Factor</h2>
       <div class="info-box">
-        <strong>Forecastability dominates:</strong> HIGH_LOW_LOW is 3.64&times; harder than the easiest group (HIGH_HIGH_HIGH), demonstrating forecastability's dominant effect on prediction difficulty. The gap dwarfs the trend (1.32&times;) and seasonality (1.51&times;) effects.
+        Forecastability dominates: HIGH_LOW_LOW is 3.64&times; harder than the easiest group (HIGH_HIGH_HIGH), demonstrating forecastability's dominant effect on prediction difficulty. The gap dwarfs the trend (1.32&times;) and seasonality (1.51&times;) effects.
       </div>
       <div class="table-wrap">
         <div class="table-scroll">
@@ -761,7 +761,7 @@
     <div class="section-inner">
       <h2 class="section-title">Analysis VI: Model Sensitivity to Forecastability</h2>
       <div class="info-box">
-        <strong>FM models are more robust:</strong> Deep learning models show higher sensitivity to forecastability (2.0&ndash;2.3&times;) than foundation models (1.7&ndash;1.8&times;), indicating greater robustness of pre-trained representations for unpredictable series.
+        FM models are more robust: Deep learning models show higher sensitivity to forecastability (2.0&ndash;2.3&times;) than foundation models (1.7&ndash;1.8&times;), indicating greater robustness of pre-trained representations for unpredictable series.
       </div>
       <div class="table-wrap">
         <div class="table-scroll">
@@ -848,7 +848,7 @@
     <div class="section-inner">
       <h2 class="section-title">Analysis VII: Pathological HIGH_LOW_LOW Regime</h2>
       <div class="info-box">
-        <strong>Hardest regime:</strong> Even the best model (CrossFormer, MAE 0.600) performs 3&times; worse than on easy series. Statistical baselines fail catastrophically (+77&ndash;89% gap from best).
+        Hardest regime: Even the best model (CrossFormer, MAE 0.600) performs 3&times; worse than on easy series. Statistical baselines fail catastrophically (+77&ndash;89% gap from best).
       </div>
       <div class="table-wrap">
         <div class="table-scroll">
@@ -935,7 +935,7 @@
     <div class="section-inner">
       <h2 class="section-title">Analysis VIII: Cross-Benchmark Consistency</h2>
       <div class="info-box">
-        <strong>QuitoBench vs. Timer:</strong> Spearman rank correlation between QuitoBench (trained, univariate) and Timer (zero-shot) is <strong>0.865</strong> (<em>p</em>&nbsp;&lt;&nbsp;0.01, 95% CI: [0.52,&nbsp;0.97]), indicating strong consistency despite different training paradigms. DL-only correlation rises to 0.891 with 6/8 groups sharing the same best DL model.
+        QuitoBench vs. Timer: Spearman rank correlation between QuitoBench (trained, univariate) and Timer (zero-shot) is 0.865 (<em>p</em>&nbsp;&lt;&nbsp;0.01, 95% CI: [0.52,&nbsp;0.97]), indicating strong consistency despite different training paradigms. DL-only correlation rises to 0.891 with 6/8 groups sharing the same best DL model.
       </div>
       <div class="table-wrap">
         <div class="table-scroll">

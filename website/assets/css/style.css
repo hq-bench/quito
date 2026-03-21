@@ -224,7 +224,7 @@ a:hover { color: var(--amber); }
 
 .btn-ghost {
   display: inline-block;
-  color: var(--text-mid);
+  color: var(--text);
   font-family: var(--font-mono);
   font-size: 0.78rem;
   font-weight: 500;
@@ -324,12 +324,10 @@ a:hover { color: var(--amber); }
 
 .section p {
   font-size: 0.88rem;
-  color: var(--text-mid);
+  color: var(--text);
   line-height: 1.7;
   margin-bottom: 0.85rem;
 }
-
-.section p strong { color: var(--text); }
 
 /* ===== FINDINGS LIST ===== */
 .findings-list {
@@ -342,7 +340,7 @@ a:hover { color: var(--amber); }
   position: relative;
   padding: 0.4rem 0 0.4rem 1.4rem;
   font-size: 0.88rem;
-  color: var(--text-mid);
+  color: var(--text);
   line-height: 1.6;
 }
 
@@ -393,7 +391,7 @@ a:hover { color: var(--amber); }
   padding: 0.9rem 1.1rem;
   margin-bottom: 1.2rem;
   font-size: 0.82rem;
-  color: var(--text-mid);
+  color: var(--text);
   line-height: 1.7;
 }
 
@@ -560,7 +558,7 @@ tbody td {
   padding: 0.6rem 0.8rem;
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
-  color: var(--text-mid);
+  color: var(--text);
 }
 
 .table-note {
@@ -712,7 +710,7 @@ tbody tr:hover .rank-badge { transform: scale(1.1); }
 
 .bibtex {
   background: var(--bg2);
-  color: var(--text-mid);
+  color: var(--text);
   padding: 1.25rem 1.5rem;
   border-radius: 6px;
   overflow-x: auto;
@@ -778,7 +776,7 @@ tbody tr:hover .rank-badge { transform: scale(1.1); }
   color: var(--text-dim);
 }
 
-.site-footer a { color: var(--text-mid); }
+.site-footer a { color: var(--text); }
 .site-footer a:hover { color: var(--amber); }
 
 /* ===== SCROLL REVEAL ===== */
