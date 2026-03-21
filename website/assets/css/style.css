@@ -14,7 +14,7 @@
   --red:       #ef4444;
   --text:      #e2e8f0;
   --text-dim:  #64748b;
-  --text-mid:  #b0bec9;
+  --text-mid:  #d1d9e0;
   --border:    rgba(255,255,255,0.07);
   --font-head: 'Syne', sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
@@ -71,6 +71,10 @@ a:hover { color: var(--amber); }
   text-transform: uppercase;
 }
 .brand:hover { color: #fff; text-decoration: none; }
+.brand-alipay {
+  color: #1677ff;
+  margin-right: 0.3rem;
+}
 
 .nav-links {
   display: flex;
