@@ -122,31 +122,32 @@
           <table class="sortable" id="overall-table">
             <thead>
               <tr>
-                <th class="rank-col">Rank</th>
-                <th>Model</th>
-                <th>Category</th>
-                <th class="num-col">MV Rank</th>
-                <th class="num-col">UV Rank</th>
-                <th class="num-col">Overall Rank</th>
-                <th class="num-col">MV MAE</th>
-                <th class="num-col">UV MAE</th>
-                <th class="num-col mae-col">Overall MAE</th>
+                <th rowspan="2">Model</th>
+                <th rowspan="2">Category</th>
+                <th colspan="3" class="group-header">Mean Rank</th>
+                <th colspan="3" class="group-header">Mean MAE</th>
+              </tr>
+              <tr>
+                <th class="num-col">MV</th>
+                <th class="num-col">UV</th>
+                <th class="num-col">Overall</th>
+                <th class="num-col">MV</th>
+                <th class="num-col">UV</th>
+                <th class="num-col">Overall</th>
               </tr>
             </thead>
             <tbody>
-              <tr data-type="dl">
-                <td class="rank-col"><span class="rank-badge rank-1">1</span></td>
-                <td class="model-name">CrossFormer</td>
+              <tr data-type="dl" class="row-highlight">
+                <td class="model-name"><strong>CrossFormer</strong></td>
                 <td><span class="badge badge-dl">DL</span></td>
-                <td class="num-col">3.05</td>
-                <td class="num-col">2.67</td>
-                <td class="num-col">2.86</td>
-                <td class="num-col">0.282</td>
-                <td class="num-col">0.275</td>
-                <td class="num-col mae-col" data-value="0.279">0.279</td>
+                <td class="num-col"><strong>3.05</strong></td>
+                <td class="num-col"><strong>2.67</strong></td>
+                <td class="num-col"><strong>2.86</strong></td>
+                <td class="num-col"><strong>0.282</strong></td>
+                <td class="num-col"><strong>0.275</strong></td>
+                <td class="num-col"><strong>0.279</strong></td>
               </tr>
               <tr data-type="fm">
-                <td class="rank-col"><span class="rank-badge rank-2">2</span></td>
                 <td class="model-name">Chronos-2</td>
                 <td><span class="badge badge-fm">FM</span></td>
                 <td class="num-col">3.21</td>
@@ -154,10 +155,9 @@
                 <td class="num-col">3.36</td>
                 <td class="num-col">0.310</td>
                 <td class="num-col">0.317</td>
-                <td class="num-col mae-col" data-value="0.314">0.314</td>
+                <td class="num-col">0.314</td>
               </tr>
               <tr data-type="fm">
-                <td class="rank-col"><span class="rank-badge rank-3">3</span></td>
                 <td class="model-name">TimesFM-2.5</td>
                 <td><span class="badge badge-fm">FM</span></td>
                 <td class="num-col">4.21</td>
@@ -165,10 +165,9 @@
                 <td class="num-col">4.21</td>
                 <td class="num-col">0.319</td>
                 <td class="num-col">0.319</td>
-                <td class="num-col mae-col" data-value="0.319">0.319</td>
+                <td class="num-col">0.319</td>
               </tr>
               <tr data-type="dl">
-                <td class="rank-col"><span class="rank-badge rank-other">4</span></td>
                 <td class="model-name">PatchTST</td>
                 <td><span class="badge badge-dl">DL</span></td>
                 <td class="num-col">4.37</td>
@@ -176,10 +175,9 @@
                 <td class="num-col">4.35</td>
                 <td class="num-col">0.299</td>
                 <td class="num-col">0.298</td>
-                <td class="num-col mae-col" data-value="0.299">0.299</td>
+                <td class="num-col">0.299</td>
               </tr>
               <tr data-type="fm">
-                <td class="rank-col"><span class="rank-badge rank-other">5</span></td>
                 <td class="model-name">TiRex</td>
                 <td><span class="badge badge-fm">FM</span></td>
                 <td class="num-col">4.36</td>
@@ -187,10 +185,9 @@
                 <td class="num-col">4.36</td>
                 <td class="num-col">0.322</td>
                 <td class="num-col">0.322</td>
-                <td class="num-col mae-col" data-value="0.322">0.322</td>
+                <td class="num-col">0.322</td>
               </tr>
               <tr data-type="dl">
-                <td class="rank-col"><span class="rank-badge rank-other">6</span></td>
                 <td class="model-name">iTransformer</td>
                 <td><span class="badge badge-dl">DL</span></td>
                 <td class="num-col">4.56</td>
@@ -198,10 +195,9 @@
                 <td class="num-col">4.67</td>
                 <td class="num-col">0.299</td>
                 <td class="num-col">0.302</td>
-                <td class="num-col mae-col" data-value="0.301">0.301</td>
+                <td class="num-col">0.301</td>
               </tr>
               <tr data-type="dl">
-                <td class="rank-col"><span class="rank-badge rank-other">7</span></td>
                 <td class="model-name">TSMixer</td>
                 <td><span class="badge badge-dl">DL</span></td>
                 <td class="num-col">5.58</td>
@@ -209,10 +205,9 @@
                 <td class="num-col">5.51</td>
                 <td class="num-col">0.313</td>
                 <td class="num-col">0.309</td>
-                <td class="num-col mae-col" data-value="0.311">0.311</td>
+                <td class="num-col">0.311</td>
               </tr>
               <tr data-type="dl">
-                <td class="rank-col"><span class="rank-badge rank-other">8</span></td>
                 <td class="model-name">DLinear</td>
                 <td><span class="badge badge-dl">DL</span></td>
                 <td class="num-col">7.24</td>
@@ -220,10 +215,9 @@
                 <td class="num-col">7.26</td>
                 <td class="num-col">0.368</td>
                 <td class="num-col">0.371</td>
-                <td class="num-col mae-col" data-value="0.369">0.369</td>
+                <td class="num-col">0.369</td>
               </tr>
               <tr data-type="stat">
-                <td class="rank-col"><span class="rank-badge rank-other">9</span></td>
                 <td class="model-name">ES</td>
                 <td><span class="badge badge-stat">BASELINE</span></td>
                 <td class="num-col">9.18</td>
@@ -231,10 +225,9 @@
                 <td class="num-col">9.18</td>
                 <td class="num-col">0.695</td>
                 <td class="num-col">0.695</td>
-                <td class="num-col mae-col" data-value="0.695">0.695</td>
+                <td class="num-col">0.695</td>
               </tr>
               <tr data-type="stat">
-                <td class="rank-col"><span class="rank-badge rank-other">10</span></td>
                 <td class="model-name">SNaive</td>
                 <td><span class="badge badge-stat">BASELINE</span></td>
                 <td class="num-col">9.25</td>
@@ -242,7 +235,7 @@
                 <td class="num-col">9.25</td>
                 <td class="num-col">0.675</td>
                 <td class="num-col">0.675</td>
-                <td class="num-col mae-col" data-value="0.675">0.675</td>
+                <td class="num-col">0.675</td>
               </tr>
             </tbody>
           </table>

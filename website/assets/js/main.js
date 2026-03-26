@@ -56,39 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(draw);
   }
 
-  // ===== MAE BAR CHARTS =====
-  const maeMaxWidth = 56; // px
-  const maeCells = document.querySelectorAll('#overall-table .mae-col[data-value]');
-  const maeValues = Array.from(maeCells).map(c => parseFloat(c.dataset.value));
-  const maeMax = Math.max(...maeValues);
-
-  maeCells.forEach(cell => {
-    const val = parseFloat(cell.dataset.value);
-    const pct = val / maeMax;
-    const text = cell.textContent.trim();
-    const inner = document.createElement('span');
-    inner.className = 'mae-cell-inner';
-    inner.innerHTML = `<span>${text}</span><span class="mae-bar" data-width="${pct * maeMaxWidth}"></span>`;
-    cell.textContent = '';
-    cell.appendChild(inner);
-  });
-
-  // Animate bars when table scrolls into view
-  const leaderboardTable = document.querySelector('#leaderboard .table-wrap');
-  if (leaderboardTable) {
-    const barObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          document.querySelectorAll('.mae-bar').forEach(bar => {
-            bar.style.width = bar.dataset.width + 'px';
-          });
-          barObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    barObserver.observe(leaderboardTable);
-  }
-
   // ===== TABLE SORTING =====
   document.querySelectorAll('table.sortable').forEach(table => {
     const headers = table.querySelectorAll('thead th');
