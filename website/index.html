@@ -22,14 +22,13 @@
           <li><a href="#about">About</a></li>
           <li><a href="#leaderboard">Leaderboard</a></li>
           <li><a href="#context-length">Context</a></li>
-          <li><a href="#tsf-regime">Regime</a></li>
-          <li><a href="#mode-analysis">Mode</a></li>
           <li><a href="#horizon">Horizon</a></li>
-          <li><a href="#efficiency">Efficiency</a></li>
+          <li><a href="#tsf-regime">Regime</a></li>
           <li><a href="#difficulty">Difficulty</a></li>
           <li><a href="#sensitivity">Sensitivity</a></li>
           <li><a href="#pathological">Pathological</a></li>
-          <li><a href="#cross-benchmark">Consistency</a></li>
+          <li><a href="#efficiency">Efficiency</a></li>
+          <li><a href="#cross-benchmark">Robustness</a></li>
           <li><a href="#citation">Cite</a></li>
         </ul>
       </nav>
@@ -358,196 +357,10 @@
     </div>
   </section>
 
-  <!-- ===== ANALYSIS III: TSF-REGIME SPECIALIZATION ===== -->
-  <section class="section" id="tsf-regime">
-    <div class="section-inner">
-      <h2 class="section-title">Analysis III: TSF-Regime Specialization</h2>
-      <div class="info-box">
-        Complementary specialization: At the category level, FM wins 6 of 8 cells; however, the best single DL model (CrossFormer) beats the best FM (Chronos-2) in 4 of 8 cells&mdash;primarily those without seasonality&mdash;with up to 38.4% advantage. Regime labels follow <em>Trend&ndash;Seasonality&ndash;Forecastability</em> convention (threshold 0.4).
-      </div>
-      <div class="table-wrap">
-        <div class="table-scroll">
-          <table class="sortable" id="regime-table">
-            <thead>
-              <tr>
-                <th>TSF Regime</th>
-                <th>Trend</th>
-                <th>Seasonality</th>
-                <th>Forecastability</th>
-                <th class="num-col">CrossFormer MAE</th>
-                <th class="num-col">Chronos-2 MAE</th>
-                <th>Winner</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>High&ndash;High&ndash;High</td>
-                <td><span class="lvl lvl-high">High</span></td>
-                <td><span class="lvl lvl-high">High</span></td>
-                <td><span class="lvl lvl-high">High</span></td>
-                <td class="num-col">0.165</td>
-                <td class="num-col">0.163</td>
-                <td><span class="badge badge-fm">FM</span></td>
-              </tr>
-              <tr>
-                <td>High&ndash;High&ndash;Low</td>
-                <td><span class="lvl lvl-high">High</span></td>
-                <td><span class="lvl lvl-high">High</span></td>
-                <td><span class="lvl lvl-low">Low</span></td>
-                <td class="num-col">0.356</td>
-                <td class="num-col">0.353</td>
-                <td><span class="badge badge-fm">FM</span></td>
-              </tr>
-              <tr>
-                <td>High&ndash;Low&ndash;High</td>
-                <td><span class="lvl lvl-high">High</span></td>
-                <td><span class="lvl lvl-low">Low</span></td>
-                <td><span class="lvl lvl-high">High</span></td>
-                <td class="num-col">0.180</td>
-                <td class="num-col">0.349</td>
-                <td><span class="badge badge-dl">DL (+38.4%)</span></td>
-              </tr>
-              <tr>
-                <td>High&ndash;Low&ndash;Low</td>
-                <td><span class="lvl lvl-high">High</span></td>
-                <td><span class="lvl lvl-low">Low</span></td>
-                <td><span class="lvl lvl-low">Low</span></td>
-                <td class="num-col">0.600</td>
-                <td class="num-col">0.628</td>
-                <td><span class="badge badge-dl">DL</span></td>
-              </tr>
-              <tr>
-                <td>Low&ndash;High&ndash;High</td>
-                <td><span class="lvl lvl-low">Low</span></td>
-                <td><span class="lvl lvl-high">High</span></td>
-                <td><span class="lvl lvl-high">High</span></td>
-                <td class="num-col">0.199</td>
-                <td class="num-col">0.197</td>
-                <td><span class="badge badge-fm">FM</span></td>
-              </tr>
-              <tr>
-                <td>Low&ndash;High&ndash;Low</td>
-                <td><span class="lvl lvl-low">Low</span></td>
-                <td><span class="lvl lvl-high">High</span></td>
-                <td><span class="lvl lvl-low">Low</span></td>
-                <td class="num-col">0.239</td>
-                <td class="num-col">0.235</td>
-                <td><span class="badge badge-fm">FM</span></td>
-              </tr>
-              <tr>
-                <td>Low&ndash;Low&ndash;High</td>
-                <td><span class="lvl lvl-low">Low</span></td>
-                <td><span class="lvl lvl-low">Low</span></td>
-                <td><span class="lvl lvl-high">High</span></td>
-                <td class="num-col">0.154</td>
-                <td class="num-col">0.207</td>
-                <td><span class="badge badge-dl">DL (+17.7%)</span></td>
-              </tr>
-              <tr>
-                <td>Low&ndash;Low&ndash;Low</td>
-                <td><span class="lvl lvl-low">Low</span></td>
-                <td><span class="lvl lvl-low">Low</span></td>
-                <td><span class="lvl lvl-low">Low</span></td>
-                <td class="num-col">0.370</td>
-                <td class="num-col">0.397</td>
-                <td><span class="badge badge-dl">DL</span></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <p class="table-note">CrossFormer = best DL model, Chronos-2 = best FM. Highlighted DL wins show percentage advantage.</p>
-    </div>
-  </section>
-
-  <!-- ===== ANALYSIS IV: FORECASTING MODE ===== -->
-  <section class="section" id="mode-analysis">
-    <div class="section-inner">
-      <h2 class="section-title">Analysis IV: Forecasting Mode</h2>
-      <div class="info-box">
-        Variate mode preference: MV/UV differences are small and not statistically significant overall (paired <em>t</em>-test <em>p</em>&nbsp;=&nbsp;0.74), but the direction is model-family-specific. FM models benefit from multivariate context (Chronos-2 +2.3% in MV), while most DL models favour UV mode (CrossFormer +2.5% in UV). Differences below 0.1% are marked Neutral.
-      </div>
-      <div class="table-wrap">
-        <div class="table-scroll">
-          <table class="sortable" id="mode-table">
-            <thead>
-              <tr>
-                <th>Model</th>
-                <th>Category</th>
-                <th class="num-col">MV MAE</th>
-                <th class="num-col">UV MAE</th>
-                <th>Preferred Mode</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td class="model-name">CrossFormer</td>
-                <td><span class="badge badge-dl">DL</span></td>
-                <td class="num-col">0.282</td>
-                <td class="num-col">0.275</td>
-                <td>UV (+2.5%)</td>
-              </tr>
-              <tr>
-                <td class="model-name">PatchTST</td>
-                <td><span class="badge badge-dl">DL</span></td>
-                <td class="num-col">0.299</td>
-                <td class="num-col">0.298</td>
-                <td>UV (+0.4%)</td>
-              </tr>
-              <tr>
-                <td class="model-name">TSMixer</td>
-                <td><span class="badge badge-dl">DL</span></td>
-                <td class="num-col">0.313</td>
-                <td class="num-col">0.309</td>
-                <td>UV (+1.3%)</td>
-              </tr>
-              <tr>
-                <td class="model-name">iTransformer</td>
-                <td><span class="badge badge-dl">DL</span></td>
-                <td class="num-col">0.299</td>
-                <td class="num-col">0.302</td>
-                <td>MV (+0.7%)</td>
-              </tr>
-              <tr>
-                <td class="model-name">DLinear</td>
-                <td><span class="badge badge-dl">DL</span></td>
-                <td class="num-col">0.368</td>
-                <td class="num-col">0.371</td>
-                <td>MV (+0.7%)</td>
-              </tr>
-              <tr>
-                <td class="model-name">Chronos-2</td>
-                <td><span class="badge badge-fm">FM</span></td>
-                <td class="num-col">0.310</td>
-                <td class="num-col">0.317</td>
-                <td>MV (+2.3%)</td>
-              </tr>
-              <tr>
-                <td class="model-name">TimesFM-2.5</td>
-                <td><span class="badge badge-fm">FM</span></td>
-                <td class="num-col">0.319</td>
-                <td class="num-col">0.319</td>
-                <td>Neutral</td>
-              </tr>
-              <tr>
-                <td class="model-name">TiRex</td>
-                <td><span class="badge badge-fm">FM</span></td>
-                <td class="num-col">0.322</td>
-                <td class="num-col">0.322</td>
-                <td>Neutral</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <p class="table-note">Preferred mode shows the better option and relative improvement.</p>
-    </div>
-  </section>
-
-  <!-- ===== ANALYSIS V: FORECAST-HORIZON ROBUSTNESS ===== -->
+  <!-- ===== ANALYSIS III: FORECAST-HORIZON ROBUSTNESS ===== -->
   <section class="section" id="horizon">
     <div class="section-inner">
-      <h2 class="section-title">Analysis V: Forecast-Horizon Robustness</h2>
+      <h2 class="section-title">Analysis III: Forecast-Horizon Robustness</h2>
       <div class="info-box">
         Horizon degradation: DLinear is the most horizon-robust model (+14.8% from H=48 to H=512), though at the cost of higher baseline MAE. Most models degrade 26&ndash;37%.
       </div>
@@ -646,79 +459,112 @@
     </div>
   </section>
 
-  <!-- ===== ANALYSIS VI: PARAMETER EFFICIENCY ===== -->
-  <section class="section" id="efficiency">
+  <!-- ===== ANALYSIS IV: TSF-REGIME SPECIALIZATION ===== -->
+  <section class="section" id="tsf-regime">
     <div class="section-inner">
-      <h2 class="section-title">Analysis VI: Parameter Return on Investment</h2>
+      <h2 class="section-title">Analysis IV: TSF Regime &mdash; Specialization</h2>
       <div class="info-box">
-        59&times; fewer parameters: DL models (avg. 1.9M params) achieve statistically indistinguishable aggregate performance from FM models (avg. 110M params). CrossFormer at 1M params outranks every foundation model including Chronos-2 at 100M.
+        Complementary specialization: At the category level, FM wins 6 of 8 cells; however, the best single DL model (CrossFormer) beats the best FM (Chronos-2) in 4 of 8 cells&mdash;primarily those without seasonality&mdash;with up to 38.4% advantage. Regime labels follow <em>Trend&ndash;Seasonality&ndash;Forecastability</em> convention (threshold 0.4).
       </div>
       <div class="table-wrap">
         <div class="table-scroll">
-          <table class="sortable" id="efficiency-table">
+          <table class="sortable" id="regime-table">
             <thead>
               <tr>
-                <th>Metric</th>
-                <th class="num-col">Foundation Models</th>
-                <th class="num-col">Deep Learning</th>
-                <th>ROI</th>
+                <th>TSF Regime</th>
+                <th>Trend</th>
+                <th>Seasonality</th>
+                <th>Forecastability</th>
+                <th class="num-col">CrossFormer MAE</th>
+                <th class="num-col">Chronos-2 MAE</th>
+                <th>Winner</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td class="model-name">Avg. Params (M)</td>
-                <td class="num-col">110</td>
-                <td class="num-col">1.9</td>
-                <td><span class="badge badge-dl">59&times; fewer</span></td>
+                <td>High&ndash;High&ndash;High</td>
+                <td><span class="lvl lvl-high">High</span></td>
+                <td><span class="lvl lvl-high">High</span></td>
+                <td><span class="lvl lvl-high">High</span></td>
+                <td class="num-col">0.165</td>
+                <td class="num-col">0.163</td>
+                <td><span class="badge badge-fm">FM</span></td>
               </tr>
               <tr>
-                <td class="model-name">Best MAE</td>
-                <td class="num-col">0.3138</td>
-                <td class="num-col">0.2789</td>
-                <td><span class="badge badge-dl">DL &minus;11%</span></td>
+                <td>High&ndash;High&ndash;Low</td>
+                <td><span class="lvl lvl-high">High</span></td>
+                <td><span class="lvl lvl-high">High</span></td>
+                <td><span class="lvl lvl-low">Low</span></td>
+                <td class="num-col">0.356</td>
+                <td class="num-col">0.353</td>
+                <td><span class="badge badge-fm">FM</span></td>
               </tr>
               <tr>
-                <td class="model-name">Mean MAE</td>
-                <td class="num-col">0.3185</td>
-                <td class="num-col">0.3117</td>
-                <td><span class="badge badge-dl">DL &minus;2%</span></td>
+                <td>High&ndash;Low&ndash;High</td>
+                <td><span class="lvl lvl-high">High</span></td>
+                <td><span class="lvl lvl-low">Low</span></td>
+                <td><span class="lvl lvl-high">High</span></td>
+                <td class="num-col">0.180</td>
+                <td class="num-col">0.349</td>
+                <td><span class="badge badge-dl">DL (+38.4%)</span></td>
               </tr>
               <tr>
-                <td class="model-name">MAE at L=96</td>
-                <td class="num-col">0.4551</td>
-                <td class="num-col">0.3432</td>
-                <td><span class="badge badge-dl">DL &minus;25%</span></td>
+                <td>High&ndash;Low&ndash;Low</td>
+                <td><span class="lvl lvl-high">High</span></td>
+                <td><span class="lvl lvl-low">Low</span></td>
+                <td><span class="lvl lvl-low">Low</span></td>
+                <td class="num-col">0.600</td>
+                <td class="num-col">0.628</td>
+                <td><span class="badge badge-dl">DL</span></td>
               </tr>
               <tr>
-                <td class="model-name">MAE at L&ge;576</td>
-                <td class="num-col">0.2502</td>
-                <td class="num-col">0.2960</td>
-                <td><span class="badge badge-fm">FM &minus;15%</span></td>
+                <td>Low&ndash;High&ndash;High</td>
+                <td><span class="lvl lvl-low">Low</span></td>
+                <td><span class="lvl lvl-high">High</span></td>
+                <td><span class="lvl lvl-high">High</span></td>
+                <td class="num-col">0.199</td>
+                <td class="num-col">0.197</td>
+                <td><span class="badge badge-fm">FM</span></td>
               </tr>
               <tr>
-                <td class="model-name">MAE / M Params</td>
-                <td class="num-col">0.0029</td>
-                <td class="num-col">0.1676</td>
-                <td><span class="badge badge-dl">57.9&times;</span></td>
+                <td>Low&ndash;High&ndash;Low</td>
+                <td><span class="lvl lvl-low">Low</span></td>
+                <td><span class="lvl lvl-high">High</span></td>
+                <td><span class="lvl lvl-low">Low</span></td>
+                <td class="num-col">0.239</td>
+                <td class="num-col">0.235</td>
+                <td><span class="badge badge-fm">FM</span></td>
               </tr>
               <tr>
-                <td class="model-name">Rank / M Params</td>
-                <td class="num-col">0.0361</td>
-                <td class="num-col">2.6505</td>
-                <td><span class="badge badge-dl">73.3&times;</span></td>
+                <td>Low&ndash;Low&ndash;High</td>
+                <td><span class="lvl lvl-low">Low</span></td>
+                <td><span class="lvl lvl-low">Low</span></td>
+                <td><span class="lvl lvl-high">High</span></td>
+                <td class="num-col">0.154</td>
+                <td class="num-col">0.207</td>
+                <td><span class="badge badge-dl">DL (+17.7%)</span></td>
+              </tr>
+              <tr>
+                <td>Low&ndash;Low&ndash;Low</td>
+                <td><span class="lvl lvl-low">Low</span></td>
+                <td><span class="lvl lvl-low">Low</span></td>
+                <td><span class="lvl lvl-low">Low</span></td>
+                <td class="num-col">0.370</td>
+                <td class="num-col">0.397</td>
+                <td><span class="badge badge-dl">DL</span></td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
-      <p class="table-note">FM avg. 110M params vs. DL avg. 1.9M params. Higher MAE/M and Rank/M values indicate better per-parameter efficiency.</p>
+      <p class="table-note">CrossFormer = best DL model, Chronos-2 = best FM. Highlighted DL wins show percentage advantage.</p>
     </div>
   </section>
 
-  <!-- ===== ANALYSIS VII: FORECASTABILITY AS DOMINANT DIFFICULTY FACTOR ===== -->
+  <!-- ===== ANALYSIS IV: TSF REGIME — FORECASTABILITY ===== -->
   <section class="section" id="difficulty">
     <div class="section-inner">
-      <h2 class="section-title">Analysis VII: Forecastability as Dominant Difficulty Factor</h2>
+      <h2 class="section-title">Analysis IV: TSF Regime &mdash; Forecastability</h2>
       <div class="info-box">
         Forecastability dominates: HIGH_LOW_LOW is 3.64&times; harder than the easiest group (HIGH_HIGH_HIGH), demonstrating forecastability's dominant effect on prediction difficulty. The gap dwarfs the trend (1.32&times;) and seasonality (1.51&times;) effects.
       </div>
@@ -808,10 +654,10 @@
     </div>
   </section>
 
-  <!-- ===== ANALYSIS VII (cont.): FORECASTABILITY SENSITIVITY ===== -->
+  <!-- ===== ANALYSIS IV: TSF REGIME — SENSITIVITY ===== -->
   <section class="section" id="sensitivity">
     <div class="section-inner">
-      <h2 class="section-title">Analysis VII: Model Sensitivity to Forecastability</h2>
+      <h2 class="section-title">Analysis IV: TSF Regime &mdash; Sensitivity</h2>
       <div class="info-box">
         FM models are more robust: Deep learning models show higher sensitivity to forecastability (2.0&ndash;2.3&times;) than foundation models (1.7&ndash;1.8&times;), indicating greater robustness of pre-trained representations for unpredictable series.
       </div>
@@ -895,10 +741,10 @@
     </div>
   </section>
 
-  <!-- ===== ANALYSIS VIII: PATHOLOGICAL HIGH_LOW_LOW ===== -->
+  <!-- ===== ANALYSIS IV: TSF REGIME — PATHOLOGICAL ===== -->
   <section class="section" id="pathological">
     <div class="section-inner">
-      <h2 class="section-title">Analysis VIII: Pathological HIGH_LOW_LOW Regime</h2>
+      <h2 class="section-title">Analysis IV: TSF Regime &mdash; Pathological HIGH_LOW_LOW</h2>
       <div class="info-box">
         Hardest regime: Even the best model (CrossFormer, MAE 0.600) performs 3&times; worse than on easy series. Statistical baselines fail catastrophically (+77&ndash;82% gap from best).
       </div>
@@ -982,12 +828,82 @@
     </div>
   </section>
 
-  <!-- ===== ANALYSIS IX: CROSS-BENCHMARK CONSISTENCY ===== -->
+  <!-- ===== ANALYSIS V: PARAMETER EFFICIENCY ===== -->
+  <section class="section" id="efficiency">
+    <div class="section-inner">
+      <h2 class="section-title">Analysis V: Parameter Efficiency</h2>
+      <div class="info-box">
+        59&times; fewer parameters: DL models (avg. 1.9M params) achieve statistically indistinguishable aggregate performance from FM models (avg. 110M params). CrossFormer at 1M params outranks every foundation model including Chronos-2 at 100M.
+      </div>
+      <div class="table-wrap">
+        <div class="table-scroll">
+          <table class="sortable" id="efficiency-table">
+            <thead>
+              <tr>
+                <th>Metric</th>
+                <th class="num-col">Foundation Models</th>
+                <th class="num-col">Deep Learning</th>
+                <th>ROI</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="model-name">Avg. Params (M)</td>
+                <td class="num-col">110</td>
+                <td class="num-col">1.9</td>
+                <td><span class="badge badge-dl">59&times; fewer</span></td>
+              </tr>
+              <tr>
+                <td class="model-name">Best MAE</td>
+                <td class="num-col">0.3138</td>
+                <td class="num-col">0.2789</td>
+                <td><span class="badge badge-dl">DL &minus;11%</span></td>
+              </tr>
+              <tr>
+                <td class="model-name">Mean MAE</td>
+                <td class="num-col">0.3185</td>
+                <td class="num-col">0.3117</td>
+                <td><span class="badge badge-dl">DL &minus;2%</span></td>
+              </tr>
+              <tr>
+                <td class="model-name">MAE at L=96</td>
+                <td class="num-col">0.4551</td>
+                <td class="num-col">0.3432</td>
+                <td><span class="badge badge-dl">DL &minus;25%</span></td>
+              </tr>
+              <tr>
+                <td class="model-name">MAE at L&ge;576</td>
+                <td class="num-col">0.2502</td>
+                <td class="num-col">0.2960</td>
+                <td><span class="badge badge-fm">FM &minus;15%</span></td>
+              </tr>
+              <tr>
+                <td class="model-name">MAE / M Params</td>
+                <td class="num-col">0.0029</td>
+                <td class="num-col">0.1676</td>
+                <td><span class="badge badge-dl">57.9&times;</span></td>
+              </tr>
+              <tr>
+                <td class="model-name">Rank / M Params</td>
+                <td class="num-col">0.0361</td>
+                <td class="num-col">2.6505</td>
+                <td><span class="badge badge-dl">73.3&times;</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="table-note">FM avg. 110M params vs. DL avg. 1.9M params. Higher MAE/M and Rank/M values indicate better per-parameter efficiency.</p>
+    </div>
+  </section>
+
+  <!-- ===== ANALYSIS VI: RANKING ROBUSTNESS ===== -->
   <section class="section" id="cross-benchmark">
     <div class="section-inner">
-      <h2 class="section-title">Analysis IX: Cross-Benchmark Consistency</h2>
+      <h2 class="section-title">Analysis VI: Ranking Robustness</h2>
       <div class="info-box">
-        QuitoBench vs. Timer: Spearman rank correlation between QuitoBench (trained, univariate) and Timer (zero-shot) is 0.865 (<em>p</em>&nbsp;&lt;&nbsp;0.01, 95% CI: [0.52,&nbsp;0.97]), indicating strong consistency despite different training paradigms. DL-only correlation rises to 0.891 with 7/8 regimes sharing the same best DL model.
+        <strong>Cross-metric consistency:</strong> MAE and MSE rankings are highly correlated (Spearman &rho;&nbsp;=&nbsp;0.733 aggregate, mean 0.847 per configuration). CrossFormer retains the top rank under both metrics.<br>
+        <strong>Cross-benchmark consistency:</strong> QuitoBench vs.&nbsp;Timer Spearman &rho;&nbsp;=&nbsp;0.865 (<em>p</em>&nbsp;&lt;&nbsp;0.01, 95% CI: [0.52,&nbsp;0.97]), with DL-only correlation rising to 0.891 and 7/8 regimes sharing the same best DL model.
       </div>
       <div class="table-wrap">
         <div class="table-scroll">
@@ -1087,7 +1003,7 @@
           </table>
         </div>
       </div>
-      <p class="table-note">Correlation = 0.865. Rank changes &le; 1 are Tier 1, 2 are Tier 2, and &ge; 3 are Tier 3 (highlighted in red).</p>
+      <p class="table-note">Cross-benchmark Spearman &rho; = 0.865. Rank changes &le; 1 are Tier 1, 2 are Tier 2, and &ge; 3 are Tier 3.</p>
     </div>
   </section>
 

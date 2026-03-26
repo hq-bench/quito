@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       // Update nav links visibility based on active tab
-      const analysisLinks = ['#context-length', '#tsf-regime', '#mode-analysis', '#horizon', '#efficiency', '#difficulty', '#sensitivity', '#pathological', '#cross-benchmark'];
+      const analysisLinks = ['#context-length', '#horizon', '#tsf-regime', '#difficulty', '#sensitivity', '#pathological', '#efficiency', '#cross-benchmark'];
       navAnchors.forEach(a => {
         const href = a.getAttribute('href');
         if (analysisLinks.includes(href)) {
@@ -203,7 +203,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Hide analysis nav links on initial load
-  const analysisNavLinks = ['#context-length', '#tsf-regime', '#mode-analysis', '#horizon', '#efficiency', '#difficulty', '#sensitivity', '#pathological', '#cross-benchmark'];
+  const analysisNavLinks = ['#context-length', '#horizon', '#tsf-regime', '#difficulty', '#sensitivity', '#pathological', '#efficiency', '#cross-benchmark'];
   navAnchors.forEach(a => {
     const href = a.getAttribute('href');
     if (analysisNavLinks.includes(href)) {
