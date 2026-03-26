@@ -21,6 +21,7 @@
         <ul class="nav-links">
           <li><a href="#about">About</a></li>
           <li><a href="#leaderboard">Leaderboard</a></li>
+          <li><a href="#scaling-laws">Scaling</a></li>
           <li><a href="#context-length">Context</a></li>
           <li><a href="#tsf-regime">Regime</a></li>
           <li><a href="#mode-analysis">Mode</a></li>
@@ -78,16 +79,16 @@
     <div class="section-inner">
       <h2 class="section-title">About QuitoBench</h2>
       <p>
-        Time series forecasting is critical across finance, healthcare, and cloud computing, yet progress is constrained by a fundamental bottleneck: the scarcity of large-scale, high-quality benchmarks. QuitoBench is a regime-balanced benchmark for time series forecasting with coverage across 8 trend&times;seasonality&times;forecastability (TSF) regimes, designed to capture forecasting-relevant properties rather than application-defined domain labels.
+        Time series forecasting is critical across finance, healthcare, and cloud computing, yet progress is constrained by a fundamental bottleneck: the scarcity of large-scale, high-quality benchmarks. <strong>Quito</strong> is a billion-scale CloudOps time series corpus (1.6B tokens) from Alipay&rsquo;s production infrastructure. <strong>QuitoBench</strong> is an evaluation benchmark with balanced coverage across eight trend&times;seasonality&times;forecastability (TSF) regimes&mdash;a difficulty-centric design that captures forecasting-relevant properties rather than application-defined domain labels.
       </p>
       <p>
-        The benchmark is built upon Quito, a billion-scale time series corpus of application traffic from Alipay spanning nine business domains. Benchmarking 10 models from deep learning, foundation models, and statistical baselines across 232,200 evaluation instances, we report four key findings:
+        Benchmarking <strong>10 models</strong> from deep learning, foundation models, and statistical baselines across <strong>232,200 evaluation instances</strong>, we provide four key insights:
       </p>
       <ul class="findings-list">
-        <li>A context-length crossover where deep learning models lead at short context (L=96) but foundation models dominate at long context (L&ge;576)</li>
-        <li>Forecastability is the dominant difficulty driver, producing a 3.64&times; MAE gap across regimes</li>
-        <li>Deep learning models match or surpass foundation models at 59&times; fewer parameters</li>
-        <li>Both model families benefit from more training data, but deep learning exhibits substantially stronger data scaling</li>
+        <li>A context-length crossover where deep learning models win at short context (L=96) but foundation models dominate at long context (L&ge;576)</li>
+        <li>A <strong>3.64&times;</strong> difficulty gap driven by forecastability rather than structural complexity</li>
+        <li>Deep learning models achieve comparable performance at short context with <strong>59&times;</strong> fewer parameters</li>
+        <li>Scaling the amount of training data provides substantially greater benefit than scaling model size for both model families</li>
       </ul>
     </div>
   </section>
@@ -227,8 +228,8 @@
                 <td class="model-name">ES</td>
                 <td><span class="badge badge-stat">BASELINE</span></td>
                 <td class="num-col">9.18</td>
-                <td class="num-col">9.17</td>
-                <td class="num-col">9.17</td>
+                <td class="num-col">9.18</td>
+                <td class="num-col">9.18</td>
                 <td class="num-col">0.695</td>
                 <td class="num-col">0.695</td>
                 <td class="num-col mae-col" data-value="0.695">0.695</td>
@@ -257,10 +258,69 @@
   <!-- ===== TAB: DETAILED ANALYSIS ===== -->
   <div class="tab-content" id="analysis-tab">
 
-  <!-- ===== ANALYSIS I: CONTEXT-LENGTH CROSSOVER ===== -->
+  <!-- ===== ANALYSIS I: SCALING LAWS ===== -->
+  <section class="section" id="scaling-laws">
+    <div class="section-inner">
+      <h2 class="section-title">Analysis I: Scaling Laws for Data and Model Size</h2>
+      <div class="info-box">
+        More data beats more parameters: CrossFormer&rsquo;s MAE drops 66% (0.725&rarr;0.248) when scaling training data from 10K to 100M tokens, while TimesFM-2.5 improves 24% (0.849&rarr;0.647). Model scaling shows diminishing returns&mdash;both architectures plateau beyond 1M parameters.
+      </div>
+      <div class="table-wrap">
+        <div class="table-scroll">
+          <table class="sortable" id="scaling-table">
+            <thead>
+              <tr>
+                <th>Scaling Dimension</th>
+                <th>Scale</th>
+                <th class="num-col">CrossFormer MAE</th>
+                <th class="num-col">TimesFM-2.5 MAE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td rowspan="3" class="model-name">Data (tokens)</td>
+                <td>10K</td>
+                <td class="num-col">0.725</td>
+                <td class="num-col">0.849</td>
+              </tr>
+              <tr>
+                <td>1M</td>
+                <td class="num-col">0.456</td>
+                <td class="num-col">0.735</td>
+              </tr>
+              <tr>
+                <td>100M</td>
+                <td class="num-col">0.248</td>
+                <td class="num-col">0.647</td>
+              </tr>
+              <tr>
+                <td rowspan="3" class="model-name">Model (params)</td>
+                <td>10K</td>
+                <td class="num-col">0.602</td>
+                <td class="num-col">0.821</td>
+              </tr>
+              <tr>
+                <td>1M</td>
+                <td class="num-col">0.456</td>
+                <td class="num-col">0.735</td>
+              </tr>
+              <tr>
+                <td>100M</td>
+                <td class="num-col">0.456</td>
+                <td class="num-col">0.735</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="table-note">Data scaling yields far larger gains than model scaling for both architectures. CrossFormer (1M params, DL) vs TimesFM-2.5 (200M params, FM).</p>
+    </div>
+  </section>
+
+  <!-- ===== ANALYSIS II: CONTEXT-LENGTH CROSSOVER ===== -->
   <section class="section" id="context-length">
     <div class="section-inner">
-      <h2 class="section-title">Analysis I: Context-Length Crossover</h2>
+      <h2 class="section-title">Analysis II: Context-Length Crossover</h2>
       <div class="info-box">
         Context-length crossover: DL models win by 24.6% at short context (L=96), but FM models overtake by 14.8&ndash;22.0% at longer contexts (L&ge;576). FM models improve 43&ndash;50% from L=96 to L=1024, whereas DL models improve only 7&ndash;12%.
       </div>
@@ -306,10 +366,10 @@
     </div>
   </section>
 
-  <!-- ===== ANALYSIS II: TSF-REGIME SPECIALIZATION ===== -->
+  <!-- ===== ANALYSIS III: TSF-REGIME SPECIALIZATION ===== -->
   <section class="section" id="tsf-regime">
     <div class="section-inner">
-      <h2 class="section-title">Analysis II: TSF-Regime Specialization</h2>
+      <h2 class="section-title">Analysis III: TSF-Regime Specialization</h2>
       <div class="info-box">
         Complementary specialization: At the category level, FM wins 6 of 8 cells; however, the best single DL model (CrossFormer) beats the best FM (Chronos-2) in 4 of 8 cells&mdash;primarily those without seasonality&mdash;with up to 38.4% advantage. Regime labels follow <em>Trend&ndash;Seasonality&ndash;Forecastability</em> convention (threshold 0.4).
       </div>
@@ -408,10 +468,10 @@
     </div>
   </section>
 
-  <!-- ===== ANALYSIS III: FORECASTING MODE ===== -->
+  <!-- ===== ANALYSIS IV: FORECASTING MODE ===== -->
   <section class="section" id="mode-analysis">
     <div class="section-inner">
-      <h2 class="section-title">Analysis III: Forecasting Mode</h2>
+      <h2 class="section-title">Analysis IV: Forecasting Mode</h2>
       <div class="info-box">
         Variate mode preference: MV/UV differences are small and not statistically significant overall (paired <em>t</em>-test <em>p</em>&nbsp;=&nbsp;0.74), but the direction is model-family-specific. FM models benefit from multivariate context (Chronos-2 +2.3% in MV), while most DL models favour UV mode (CrossFormer +2.5% in UV). Differences below 0.1% are marked Neutral.
       </div>
@@ -492,10 +552,10 @@
     </div>
   </section>
 
-  <!-- ===== ANALYSIS IV: FORECAST-HORIZON ROBUSTNESS ===== -->
+  <!-- ===== ANALYSIS V: FORECAST-HORIZON ROBUSTNESS ===== -->
   <section class="section" id="horizon">
     <div class="section-inner">
-      <h2 class="section-title">Analysis IV: Forecast-Horizon Robustness</h2>
+      <h2 class="section-title">Analysis V: Forecast-Horizon Robustness</h2>
       <div class="info-box">
         Horizon degradation: DLinear is the most horizon-robust model (+14.8% from H=48 to H=512), though at the cost of higher baseline MAE. Most models degrade 26&ndash;37%.
       </div>
@@ -594,10 +654,10 @@
     </div>
   </section>
 
-  <!-- ===== ANALYSIS V: PARAMETER EFFICIENCY ===== -->
+  <!-- ===== ANALYSIS VI: PARAMETER EFFICIENCY ===== -->
   <section class="section" id="efficiency">
     <div class="section-inner">
-      <h2 class="section-title">Analysis V: Parameter Return on Investment</h2>
+      <h2 class="section-title">Analysis VI: Parameter Return on Investment</h2>
       <div class="info-box">
         59&times; fewer parameters: DL models (avg. 1.9M params) achieve statistically indistinguishable aggregate performance from FM models (avg. 110M params). CrossFormer at 1M params outranks every foundation model including Chronos-2 at 100M.
       </div>
@@ -663,10 +723,10 @@
     </div>
   </section>
 
-  <!-- ===== ANALYSIS VI: FORECASTABILITY AS DOMINANT DIFFICULTY FACTOR ===== -->
+  <!-- ===== ANALYSIS VII: FORECASTABILITY AS DOMINANT DIFFICULTY FACTOR ===== -->
   <section class="section" id="difficulty">
     <div class="section-inner">
-      <h2 class="section-title">Analysis VI: Forecastability as Dominant Difficulty Factor</h2>
+      <h2 class="section-title">Analysis VII: Forecastability as Dominant Difficulty Factor</h2>
       <div class="info-box">
         Forecastability dominates: HIGH_LOW_LOW is 3.64&times; harder than the easiest group (HIGH_HIGH_HIGH), demonstrating forecastability's dominant effect on prediction difficulty. The gap dwarfs the trend (1.32&times;) and seasonality (1.51&times;) effects.
       </div>
@@ -756,10 +816,10 @@
     </div>
   </section>
 
-  <!-- ===== ANALYSIS VI (cont.): FORECASTABILITY SENSITIVITY ===== -->
+  <!-- ===== ANALYSIS VII (cont.): FORECASTABILITY SENSITIVITY ===== -->
   <section class="section" id="sensitivity">
     <div class="section-inner">
-      <h2 class="section-title">Analysis VI: Model Sensitivity to Forecastability</h2>
+      <h2 class="section-title">Analysis VII: Model Sensitivity to Forecastability</h2>
       <div class="info-box">
         FM models are more robust: Deep learning models show higher sensitivity to forecastability (2.0&ndash;2.3&times;) than foundation models (1.7&ndash;1.8&times;), indicating greater robustness of pre-trained representations for unpredictable series.
       </div>
@@ -843,12 +903,12 @@
     </div>
   </section>
 
-  <!-- ===== ANALYSIS VII: PATHOLOGICAL HIGH_LOW_LOW ===== -->
+  <!-- ===== ANALYSIS VIII: PATHOLOGICAL HIGH_LOW_LOW ===== -->
   <section class="section" id="pathological">
     <div class="section-inner">
-      <h2 class="section-title">Analysis VII: Pathological HIGH_LOW_LOW Regime</h2>
+      <h2 class="section-title">Analysis VIII: Pathological HIGH_LOW_LOW Regime</h2>
       <div class="info-box">
-        Hardest regime: Even the best model (CrossFormer, MAE 0.600) performs 3&times; worse than on easy series. Statistical baselines fail catastrophically (+77&ndash;89% gap from best).
+        Hardest regime: Even the best model (CrossFormer, MAE 0.600) performs 3&times; worse than on easy series. Statistical baselines fail catastrophically (+77&ndash;82% gap from best).
       </div>
       <div class="table-wrap">
         <div class="table-scroll">
@@ -877,50 +937,50 @@
               <tr>
                 <td class="rank-col"><span class="rank-badge rank-3">3</span></td>
                 <td class="model-name">TimesFM-2.5</td>
-                <td class="num-col">0.632</td>
-                <td class="num-col">+5.2%</td>
+                <td class="num-col">0.633</td>
+                <td class="num-col">+5.5%</td>
               </tr>
               <tr>
                 <td class="rank-col"><span class="rank-badge rank-other">4</span></td>
                 <td class="model-name">TiRex</td>
-                <td class="num-col">0.638</td>
-                <td class="num-col">+6.4%</td>
+                <td class="num-col">0.652</td>
+                <td class="num-col">+8.6%</td>
               </tr>
               <tr>
                 <td class="rank-col"><span class="rank-badge rank-other">5</span></td>
-                <td class="model-name">PatchTST</td>
-                <td class="num-col">0.687</td>
-                <td class="num-col">+14.4%</td>
+                <td class="model-name">iTransformer</td>
+                <td class="num-col">0.656</td>
+                <td class="num-col">+9.3%</td>
               </tr>
               <tr>
                 <td class="rank-col"><span class="rank-badge rank-other">6</span></td>
-                <td class="model-name">iTransformer</td>
-                <td class="num-col">0.691</td>
-                <td class="num-col">+15.1%</td>
+                <td class="model-name">PatchTST</td>
+                <td class="num-col">0.669</td>
+                <td class="num-col">+11.5%</td>
               </tr>
               <tr>
                 <td class="rank-col"><span class="rank-badge rank-other">7</span></td>
                 <td class="model-name">TSMixer</td>
-                <td class="num-col">0.693</td>
-                <td class="num-col">+15.4%</td>
+                <td class="num-col">0.691</td>
+                <td class="num-col">+15.2%</td>
               </tr>
               <tr>
                 <td class="rank-col"><span class="rank-badge rank-other">8</span></td>
                 <td class="model-name">DLinear</td>
-                <td class="num-col">0.940</td>
-                <td class="num-col">+56.8%</td>
+                <td class="num-col">0.805</td>
+                <td class="num-col">+34.3%</td>
               </tr>
               <tr>
                 <td class="rank-col"><span class="rank-badge rank-other">9</span></td>
-                <td class="model-name">SNaive</td>
-                <td class="num-col">1.063</td>
-                <td class="num-col">+77.3%</td>
+                <td class="model-name">ES</td>
+                <td class="num-col">1.061</td>
+                <td class="num-col">+77.0%</td>
               </tr>
               <tr>
                 <td class="rank-col"><span class="rank-badge rank-other">10</span></td>
-                <td class="model-name">ES</td>
-                <td class="num-col">1.135</td>
-                <td class="num-col">+89.2%</td>
+                <td class="model-name">SNaive</td>
+                <td class="num-col">1.091</td>
+                <td class="num-col">+81.9%</td>
               </tr>
             </tbody>
           </table>
@@ -930,12 +990,12 @@
     </div>
   </section>
 
-  <!-- ===== ANALYSIS VIII: CROSS-BENCHMARK CONSISTENCY ===== -->
+  <!-- ===== ANALYSIS IX: CROSS-BENCHMARK CONSISTENCY ===== -->
   <section class="section" id="cross-benchmark">
     <div class="section-inner">
-      <h2 class="section-title">Analysis VIII: Cross-Benchmark Consistency</h2>
+      <h2 class="section-title">Analysis IX: Cross-Benchmark Consistency</h2>
       <div class="info-box">
-        QuitoBench vs. Timer: Spearman rank correlation between QuitoBench (trained, univariate) and Timer (zero-shot) is 0.865 (<em>p</em>&nbsp;&lt;&nbsp;0.01, 95% CI: [0.52,&nbsp;0.97]), indicating strong consistency despite different training paradigms. DL-only correlation rises to 0.891 with 6/8 groups sharing the same best DL model.
+        QuitoBench vs. Timer: Spearman rank correlation between QuitoBench (trained, univariate) and Timer (zero-shot) is 0.865 (<em>p</em>&nbsp;&lt;&nbsp;0.01, 95% CI: [0.52,&nbsp;0.97]), indicating strong consistency despite different training paradigms. DL-only correlation rises to 0.891 with 7/8 regimes sharing the same best DL model.
       </div>
       <div class="table-wrap">
         <div class="table-scroll">
@@ -1050,7 +1110,9 @@
         <pre class="bibtex"><code id="bibtex-code">@article{quitobench2025,
   title     = {QuitoBench: A High-Quality Open Time Series
                Forecasting Benchmark},
-  author    = {Alipay Research Team},
+  author    = {Siqiao Xue and Zhaoyang Zhu and Wei Zhang and
+               Rongyao Cai and Rui Wang and Yixiang Mu and
+               Fan Zhou and Jianguo Li and Peng Di and Hang Yu},
   journal   = {arXiv preprint},
   year      = {2025},
   url       = {https://github.com/alipay/quito-10b}
