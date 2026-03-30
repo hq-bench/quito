@@ -2,8 +2,9 @@
 
 [![Project Page](https://img.shields.io/badge/Project-Page-f59e0b?style=flat-square)](https://hq-bench.github.io/quito)
 [![GitHub](https://img.shields.io/badge/GitHub-Repo-181717?style=flat-square&logo=github)](https://github.com/alipay/quito-10b)
-[![Dataset](https://img.shields.io/badge/HuggingFace-Dataset-ffd21e?style=flat-square&logo=huggingface)](https://huggingface.co/datasets/hq-bench/quitobench)
-[![Paper](https://img.shields.io/badge/arXiv-Paper-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/)
+[![Benchmark](https://img.shields.io/badge/HuggingFace-quitobench-ffd21e?style=flat-square&logo=huggingface)](https://huggingface.co/datasets/hq-bench/quitobench)
+[![Corpus](https://img.shields.io/badge/HuggingFace-quito--corpus-ffd21e?style=flat-square&logo=huggingface)](https://huggingface.co/datasets/hq-bench/quito-corpus)
+[![Paper](https://img.shields.io/badge/arXiv-2603.26017-b31b1b?style=flat-square&logo=arxiv)](https://arxiv.org/abs/2603.26017)
 [![License](https://img.shields.io/badge/License-CC--BY%204.0-green?style=flat-square)](https://creativecommons.org/licenses/by/4.0/)
 [![Visitors](https://hits.sh/hq-bench.github.io/quito.svg?view=total&color=f59e0b&labelColor=0d1117&label=Visitors&style=flat-square)](https://hits.sh/hq-bench.github.io/quito)
 
@@ -77,13 +78,15 @@ python -m http.server 8000
 If you use QuitoBench in your research, please cite:
 
 ```bibtex
-@article{quitobench2025,
+@article{xue2026quitobench,
   title     = {QuitoBench: A High-Quality Open Time Series
                Forecasting Benchmark},
-  author    = {Alipay Research Team},
-  journal   = {arXiv preprint},
-  year      = {2025},
-  url       = {https://github.com/alipay/quito-10b}
+  author    = {Xue, Siqiao and Zhu, Zhaoyang and Zhang, Wei and
+               Cai, Rongyao and Wang, Rui and
+               Mu, Yixiang and Zhou, Fan and Li, Jianguo and Di, Peng and Yu, Hang},
+  journal   = {arXiv preprint arXiv:2603.26017},
+  year      = {2026},
+  url       = {https://arxiv.org/abs/2603.26017}
 }
 ```
 
