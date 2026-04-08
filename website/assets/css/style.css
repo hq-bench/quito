@@ -776,10 +776,11 @@ tbody tr:hover .rank-badge { transform: scale(1.1); }
 .group-header {
   text-align: center;
   border-bottom: 1px solid var(--border);
-  font-size: 0.58rem;
-  letter-spacing: 0.12em;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--scarlet);
+  font-weight: 700;
   background: #e2d8c4;
 }
 
