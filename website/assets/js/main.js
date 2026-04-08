@@ -16,9 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const waves = [
-      { color: '#22d3ee', amp: 35, freq: 0.007, speed: 0.018, phase: 0 },
-      { color: '#f59e0b', amp: 28, freq: 0.011, speed: 0.013, phase: 2.1 },
-      { color: '#22d3ee', amp: 22, freq: 0.005, speed: 0.022, phase: 4.3 },
+      { color: '#8c2416', amp: 35, freq: 0.007, speed: 0.018, phase: 0 },
+      { color: '#265238', amp: 28, freq: 0.011, speed: 0.013, phase: 2.1 },
+      { color: '#1c3448', amp: 22, freq: 0.005, speed: 0.022, phase: 4.3 },
     ];
 
     let t = 0;
