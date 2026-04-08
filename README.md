@@ -79,11 +79,8 @@ If you use QuitoBench in your research, please cite:
 
 ```bibtex
 @article{xue2026quitobench,
-  title     = {QuitoBench: A High-Quality Open Time Series
-               Forecasting Benchmark},
-  author    = {Xue, Siqiao and Zhu, Zhaoyang and Zhang, Wei and
-               Cai, Rongyao and Wang, Rui and
-               Mu, Yixiang and Zhou, Fan and Li, Jianguo and Di, Peng and Yu, Hang},
+  title     = {QuitoBench: A High-Quality Open Time Series Forecasting Benchmark},
+  author    = {Xue, Siqiao and Zhu, Zhaoyang and Zhang, Wei and Cai, Rongyao and Wang, Rui and Mu, Yixiang and Zhou, Fan and Li, Jianguo and Di, Peng and Yu, Hang},
   journal   = {arXiv preprint arXiv:2603.26017},
   year      = {2026},
   url       = {https://arxiv.org/abs/2603.26017}
