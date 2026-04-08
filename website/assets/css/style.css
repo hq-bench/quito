@@ -628,8 +628,8 @@ thead th {
   cursor: pointer;
   user-select: none;
   text-transform: uppercase;
-  font-size: 0.6rem;
-  letter-spacing: 0.14em;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
   color: var(--ink);
   border-bottom: 1px solid var(--border);
   border-right: 1px solid var(--border);
